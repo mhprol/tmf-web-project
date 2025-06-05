@@ -201,3 +201,28 @@ As of the last update:
 - **Clean Codebase**: Removed unused/placeholder content
 - **Real Content**: Actual team data instead of mock information
 - **Professional Appearance**: Website now reflects real company structure
+
+### Git & Version Control Setup
+- **Repository Initialized**: Full Git version control implemented
+- **GitHub Integration**: Live repository at https://github.com/mhprol/tmf-web-project
+- **GitHub CLI**: Installed and authenticated for streamlined workflow
+- **Professional .gitignore**: Comprehensive exclusions for OS, IDE, and build files
+- **Initial Commit**: Complete project state (58 files, 17,145 lines) committed
+- **Remote Tracking**: HTTPS protocol configured for easy push/pull operations
+- **Workflow Established**: Standard Git workflow documented for ongoing development
+
+### Development Workflow (Git)
+```bash
+# Daily changes:
+git add .                    # Stage all changes
+git commit -m "Description"  # Commit with clear message
+git push                     # Push to GitHub
+
+# Check status:
+git status                   # See current changes
+git log --oneline           # View commit history
+
+# Feature development:
+git checkout -b feature-name # Create feature branch
+git push -u origin feature-name # Push new branch
+```
