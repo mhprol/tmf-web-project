@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMF Fibers | Soluções Avançadas em Filtração Sustentável</title>
+  <meta name="description" content="Tecnologia brasileira para filtração industrial com alta eficiência e sustentabilidade. Filtros biodegradaveis para diversos segmentos industriais.">
+  <meta name="keywords" content="filtros industriais, filtração industrial, elementos filtrantes, sistemas de filtração, filtros biodegradaveis">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="TMF Fibers | Soluções Avançadas em Filtração Sustentável">
+  <meta property="og:description" content="Tecnologia brasileira para filtração industrial com alta eficiência e sustentabilidade.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tmffibers.com.br">
+  <meta property="og:image" content="https://tmffibers.com.br/img/og-image.jpg">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Override GHL platform styles */
+    .c-row, div.c-row, section.c-row {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    
+    .hl_page-preview--content,
+    .hl_page-preview--content [class*="col-"] {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    /* Fix for dropdown menu gap */
+    .group {
+      position: relative;
+    }
+    
+    .group::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      z-index: 40;
+    }
+    
+    /* Mobile overrides - must come after the base rules */
+    @media only screen and (max-width: 767px) {
+      .c-row, div.c-row, section.c-row {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      
+      .hl_page-preview--content .col-eUKCjwfhsL {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e6f1f9',
+              100: '#cce3f3',
+              200: '#99c7e7',
+              300: '#66abdb',
+              400: '#328CC1', // secondary main
+              500: '#0B3C5D', // primary main
+              600: '#0a3553',
+              700: '#082e48',
+              800: '#06273d',
+              900: '#052032',
+            },
+            accent: {
+              50: '#e9f3eb',
+              100: '#d2e7d7',
+              200: '#a5cfaf',
+              300: '#78b787',
+              400: '#4c9f5f',
+              500: '#1D5E2A', // accent main
+              600: '#1a5526',
+              700: '#174921',
+              800: '#133c1b',
+              900: '#103017',
+            },
+            highlight: {
+              50: '#fdf7e2',
+              100: '#fbefc5',
+              200: '#f7df8b',
+              300: '#f3cf51',
+              400: '#D9B310', // highlight main
+              500: '#c3a10e',
+              600: '#ac8e0c',
+              700: '#927a0a',
+              800: '#796608',
+              900: '#615306',
+            },
+            neutral: {
+              50: '#F5F5F5',
+              100: '#E5E5E5',
+              200: '#D4D4D4',
+              300: '#A3A3A3',
+              400: '#737373',
+              500: '#525252',
+              600: '#404040',
+              700: '#333333',
+              800: '#262626',
+              900: '#171717',
+            },
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'sans-serif'],
+            'body': ['Open Sans', 'sans-serif'],
+            'mono': ['Roboto Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="font-body text-neutral-800 bg-white">
+  <div id="root"></div>
+
+  <script>
+    // TMF Namespace for components
+    const TMF = {};
+    
+    // UI Components Namespace
+    TMF.UI = {};
+    
+    // Button Component
+    TMF.UI.Button = ({ children, variant = 'primary', size = 'md', className = '', href, onClick, ...props }) => {
+      const baseClasses = 'inline-flex items-center justify-center font-medium transition duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2';
+      
+      const variantClasses = {
+        primary: 'bg-primary-500 hover:bg-primary-600 text-white focus:ring-primary-500',
+        secondary: 'bg-secondary-400 hover:bg-secondary-500 text-white focus:ring-secondary-400',
+        accent: 'bg-accent-500 hover:bg-accent-600 text-white focus:ring-accent-500',
+        outline: 'border border-primary-500 text-primary-500 hover:bg-primary-50 focus:ring-primary-500',
+        text: 'text-primary-500 hover:text-primary-600 hover:underline focus:ring-primary-500 bg-transparent'
+      };
+      
+      const sizeClasses = {
+        sm: 'py-1 px-3 text-sm',
+        md: 'py-2 px-4 text-base',
+        lg: 'py-3 px-6 text-lg'
+      };
+      
+      const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+      
+      const Element = href ? 'a' : 'button';
+      const linkProps = href ? { href } : {};
+      const buttonProps = !href ? { type: 'button', onClick } : {};
+      
+      return React.createElement(
+        Element,
+        {
+          className: classes,
+          ...linkProps,
+          ...buttonProps,
+          ...props
+        },
+        children
+      );
+    };
+    
+    // Card Component
+    TMF.UI.Card = ({ children, className = '', variant = 'default', hover = false, noPadding = false, ...props }) => {
+      const baseClasses = 'rounded-lg overflow-hidden';
+      
+      const variantClasses = {
+        default: 'bg-white border border-neutral-200 shadow-sm',
+        elevated: 'bg-white border border-neutral-200 shadow-md',
+        filled: 'bg-neutral-50'
+      };
+      
+      const hoverClasses = hover ? 'transition-shadow duration-200 hover:shadow-md' : '';
+      
+      const classes = `${baseClasses} ${variantClasses[variant]} ${hoverClasses} ${className}`;
+      
+      return React.createElement(
+        'div',
+        {
+          className: classes,
+          ...props
+        },
+        React.createElement(
+          'div',
+          { className: noPadding ? '' : 'p-4 overflow-visible' },
+          children
+        )
+      );
+    };
+    
+    // Section Components Namespace
+    TMF.Section = {};
+    
+    // Header Component
+    TMF.Layout = {};
+    
+    TMF.Layout.Header = () => {
+      const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+      const [searchOpen, setSearchOpen] = React.useState(false);
+      
+      const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+      const toggleSearch = () => setSearchOpen(!searchOpen);
+      
+      const navigation = [
+        { name: 'Início', href: '#' },
+        { name: 'Produtos', href: '#products', children: [
+          { name: 'Filtros de Celulose', href: '#cellulose' },
+          { name: 'Filtros Sintéticos', href: '#synthetic' },
+          { name: 'Filtros Compostos', href: '#composite' },
+          { name: 'Elementos Filtrantes', href: '#elements' },
+          { name: 'Sistemas Integrados', href: '#systems' }
+        ]},
+        { name: 'Aplicações', href: '#applications' },
+        { name: 'Sustentabilidade', href: '#sustainability' },
+        { name: 'Sobre Nós', href: '#about' },
+        { name: 'Contato', href: '#contact' }
+      ];
+      
+      return React.createElement(
+        'header',
+        { className: 'bg-white border-b border-neutral-200 sticky top-0 z-50' },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { className: 'flex justify-between items-center py-4' },
+            
+            // Logo
+            React.createElement(
+              'a',
+              { href: '/', className: 'flex items-center' },
+              React.createElement(
+                'span',
+                { className: 'text-2xl font-display font-bold text-primary-500' },
+                'TMF',
+                React.createElement(
+                  'span',
+                  { className: 'text-accent-500' },
+                  'Fibers'
+                )
+              )
+            ),
+            
+            // Desktop Navigation
+            React.createElement(
+              'nav',
+              { className: 'hidden md:flex space-x-8' },
+              navigation.map(item => 
+                item.children 
+                  ? React.createElement(
+                      'div',
+                      { 
+                        key: item.name,
+                        className: 'relative group'
+                      },
+                      React.createElement(
+                        'a',
+                        { 
+                          href: item.href,
+                          className: 'text-neutral-700 hover:text-primary-500 font-medium flex items-center'
+                        },
+                        item.name,
+                        React.createElement(
+                          'svg',
+                          { 
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            viewBox: "0 0 24 24",
+                            fill: "none",
+                            stroke: "currentColor",
+                            strokeWidth: "2",
+                            strokeLinecap: "round",
+                            strokeLinejoin: "round",
+                            className: "ml-1"
+                          },
+                          React.createElement('polyline', { points: "6 9 12 15 18 9" })
+                        )
+                      ),
+                      React.createElement(
+                        'div',
+                        { 
+                          className: 'absolute left-0 top-full w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-50',
+                          style: { marginTop: '-1px' }
+                        },
+                        item.children.map(child => 
+                          React.createElement(
+                            'a',
+                            { 
+                              key: child.name,
+                              href: child.href,
+                              className: 'block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-md'
+                            },
+                            child.name
+                          )
+                        )
+                      )
+                    )
+                  : React.createElement(
+                      'a',
+                      { 
+                        key: item.name,
+                        href: item.href,
+                        className: 'text-neutral-700 hover:text-primary-500 font-medium'
+                      },
+                      item.name
+                    )
+              )
+            ),
+            
+            // Mobile menu and search buttons
+            React.createElement(
+              'div',
+              { className: 'flex items-center space-x-4 md:space-x-6' },
+              // Search button
+              React.createElement(
+                'button',
+                { 
+                  type: 'button',
+                  onClick: toggleSearch,
+                  className: 'text-neutral-500 hover:text-neutral-700'
+                },
+                React.createElement(
+                  'svg',
+                  { 
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "20",
+                    height: "20",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round"
+                  },
+                  React.createElement('circle', { cx: "11", cy: "11", r: "8" }),
+                  React.createElement('line', { x1: "21", y1: "21", x2: "16.65", y2: "16.65" })
+                )
+              ),
+              
+              // Contact button (desktop)
+              React.createElement(
+                'div',
+                { className: 'hidden md:block' },
+                React.createElement(
+                  TMF.UI.Button,
+                  { 
+                    variant: 'primary',
+                    size: 'sm',
+                    href: '#contact'
+                  },
+                  'Fale Conosco'
+                )
+              ),
+              
+              // Mobile menu button
+              React.createElement(
+                'button',
+                { 
+                  type: 'button',
+                  onClick: toggleMobileMenu,
+                  className: 'md:hidden text-neutral-500 hover:text-neutral-700'
+                },
+                React.createElement(
+                  'svg',
+                  { 
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "24",
+                    height: "24",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round"
+                  },
+                  React.createElement('line', { x1: "3", y1: "12", x2: "21", y2: "12" }),
+                  React.createElement('line', { x1: "3", y1: "6", x2: "21", y2: "6" }),
+                  React.createElement('line', { x1: "3", y1: "18", x2: "21", y2: "18" })
+                )
+              )
+            )
+          ),
+          
+          // Mobile Navigation
+          mobileMenuOpen && React.createElement(
+            'div',
+            { className: 'md:hidden py-3 border-t border-neutral-200' },
+            React.createElement(
+              'nav',
+              { className: 'space-y-1' },
+              navigation.map(item => 
+                item.children 
+                  ? React.createElement(
+                      'div',
+                      { key: item.name },
+                      React.createElement(
+                        'button',
+                        { 
+                          className: 'w-full flex items-center justify-between py-2 text-base font-medium text-neutral-700',
+                          onClick: () => {
+                            const subMenu = document.getElementById(`mobile-${item.name}`);
+                            if (subMenu.classList.contains('hidden')) {
+                              subMenu.classList.remove('hidden');
+                            } else {
+                              subMenu.classList.add('hidden');
+                            }
+                          }
+                        },
+                        item.name,
+                        React.createElement(
+                          'svg',
+                          { 
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            viewBox: "0 0 24 24",
+                            fill: "none",
+                            stroke: "currentColor",
+                            strokeWidth: "2",
+                            strokeLinecap: "round",
+                            strokeLinejoin: "round"
+                          },
+                          React.createElement('polyline', { points: "6 9 12 15 18 9" })
+                        )
+                      ),
+                      React.createElement(
+                        'div',
+                        { 
+                          id: `mobile-${item.name}`,
+                          className: 'hidden pl-4 mt-1 space-y-1'
+                        },
+                        item.children.map(child => 
+                          React.createElement(
+                            'a',
+                            { 
+                              key: child.name,
+                              href: child.href,
+                              className: 'block py-2 text-neutral-500 hover:text-primary-500'
+                            },
+                            child.name
+                          )
+                        )
+                      )
+                    )
+                  : React.createElement(
+                      'a',
+                      { 
+                        key: item.name,
+                        href: item.href,
+                        className: 'block py-2 text-base font-medium text-neutral-700 hover:text-primary-500'
+                      },
+                      item.name
+                    )
+              )
+            ),
+            React.createElement(
+              'div',
+              { className: 'mt-4 pt-4 border-t border-neutral-200' },
+              React.createElement(
+                TMF.UI.Button,
+                { 
+                  variant: 'primary',
+                  size: 'sm',
+                  href: '#contact',
+                  className: 'w-full'
+                },
+                'Fale Conosco'
+              )
+            )
+          ),
+          
+          // Search bar
+          searchOpen && React.createElement(
+            'div',
+            { className: 'py-3 border-t border-neutral-200' },
+            React.createElement(
+              'form',
+              { 
+                className: 'relative',
+                onSubmit: (e) => e.preventDefault()
+              },
+              React.createElement(
+                'input',
+                { 
+                  type: 'search',
+                  placeholder: 'Buscar produtos, aplicações...',
+                  className: 'w-full py-2 px-4 pr-10 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500'
+                }
+              ),
+              React.createElement(
+                'button',
+                { 
+                  type: 'submit',
+                  className: 'absolute right-3 top-2.5 text-neutral-500'
+                },
+                React.createElement(
+                  'svg',
+                  { 
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "20",
+                    height: "20",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round"
+                  },
+                  React.createElement('circle', { cx: "11", cy: "11", r: "8" }),
+                  React.createElement('line', { x1: "21", y1: "21", x2: "16.65", y2: "16.65" })
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Hero Component
+    TMF.Section.Hero = () => {
+      return React.createElement(
+        'section',
+        { 
+          className: 'relative bg-primary-500 text-white overflow-hidden',
+          style: {
+            backgroundImage: 'linear-gradient(rgba(11, 60, 93, 0.9), rgba(11, 60, 93, 0.9)), url("https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }
+        },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4 py-16 md:py-24' },
+          React.createElement(
+            'div',
+            { className: 'max-w-3xl' },
+            React.createElement(
+              'span',
+              { className: 'inline-block px-3 py-1 rounded-full bg-accent-500 text-white text-sm font-medium mb-6' },
+              '🍃 We Are Green'
+            ),
+            React.createElement(
+              'h1',
+              { className: 'text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6' },
+              'Filtração Industrial Sustentável com Alta Performance'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-xl md:text-2xl mb-8 opacity-90 max-w-2xl' },
+              'Soluções avançadas em filtração com matéria-prima nacional renovável. Tecnologia que combina eficiência superior e compromisso ambiental.'
+            ),
+            React.createElement(
+              'div',
+              { className: 'flex flex-col sm:flex-row gap-4' },
+              React.createElement(
+                TMF.UI.Button,
+                { 
+                  variant: 'accent',
+                  size: 'lg',
+                  href: '#contact'
+                },
+                'Solicite uma Consultoria'
+              ),
+              React.createElement(
+                TMF.UI.Button,
+                { 
+                  variant: 'outline',
+                  size: 'lg',
+                  href: '#applications',
+                  className: 'border-white text-white hover:bg-white hover:text-primary-500'
+                },
+                'Conheça Nossas Soluções'
+              )
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'absolute bottom-0 left-0 right-0' },
+          React.createElement(
+            'svg',
+            { 
+              xmlns: 'http://www.w3.org/2000/svg',
+              viewBox: '0 0 1200 120',
+              preserveAspectRatio: 'none',
+              className: 'w-full h-12 md:h-16 text-white fill-current'
+            },
+            React.createElement(
+            'path',
+            { d: 'M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' }
+            )
+          )
+        )
+      );
+    };
+
+    // Value Proposition Component
+    TMF.Section.ValueProposition = () => {
+      const values = [
+        {
+          title: 'Filtros Biodegradáveis',
+          description: 'Desenvolvidos com matéria-prima renovável de origem nacional, contribuindo para a preservação ambiental.',
+          icon: 'leaf',
+          color: 'bg-green-50 text-accent-500'
+        },
+        {
+          title: 'Alta Eficiência',
+          description: 'Desempenho superior com capacidade de retenção otimizada e maior vida útil, mesmo em condições extremas.',
+          icon: 'bolt',
+          color: 'bg-blue-50 text-primary-500'
+        },
+        {
+          title: 'Custo-Benefício Superior',
+          description: 'Redução de custos operacionais com menor frequência de substituição e menor descarte de resíduos.',
+          icon: 'dollar-sign',
+          color: 'bg-yellow-50 text-highlight-400'
+        },
+        {
+          title: 'Suporte Técnico Especializado',
+          description: 'Equipe de engenheiros dedicados para consultoria personalizada e soluções sob medida.',
+          icon: 'headset',
+          color: 'bg-indigo-50 text-indigo-600'
+        }
+      ];
+      
+      const renderIcon = (name, className) => {
+        return React.createElement(
+          'div',
+          { className },
+          React.createElement(
+            'i',
+            { 
+              className: `fas fa-${name} w-6 h-6`
+            }
+          )
+        );
+      };
+      
+      return React.createElement(
+        'section',
+        { 
+          id: 'values',
+          className: 'py-16 bg-white'
+        },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { className: 'text-center max-w-3xl mx-auto mb-12' },
+            React.createElement(
+              'span',
+              { className: 'text-primary-600 font-medium' },
+              'Nossos Diferenciais'
+            ),
+            React.createElement(
+              'h2',
+              { className: 'text-3xl font-display font-bold mt-2 mb-4' },
+              'Por que escolher a TMF Fibers?'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-neutral-700' },
+              'Combinamos tecnologia de ponta com compromisso ambiental para oferecer soluções de filtração que atendem às mais exigentes demandas industriais.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' },
+            values.map((value, index) => 
+              React.createElement(
+                'div',
+                { 
+                  key: index,
+                  className: 'flex flex-col items-center text-center'
+                },
+                React.createElement(
+                  'div',
+                  { className: `${value.color} p-4 rounded-full mb-4 flex items-center justify-center` },
+                  React.createElement(
+                    'i',
+                    { 
+                      className: `fas fa-${value.icon} w-8 h-8 text-center leading-8`
+                    }
+                  )
+                ),
+                React.createElement(
+                  'h3',
+                  { className: 'text-xl font-display font-bold mb-2' },
+                  value.title
+                ),
+                React.createElement(
+                  'p',
+                  { className: 'text-neutral-600' },
+                  value.description
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Product Categories Component
+    TMF.Section.ProductCategories = () => {
+      const products = [
+        {
+          id: 'cellulose',
+          title: 'Filtros de Celulose',
+          description: 'Desenvolvidos com celulose renovável de alta pureza, ideais para aplicações sensíveis.',
+          specs: ['100% biodegradável', 'Alta resistência', 'Retenção: 1-100 mícrons', 'Temperatura: até 90°C'],
+          image: 'https://breinerco.com/wp-content/uploads/2023/01/BRI-Properties-of-Cellulose-Fiber-Material-1-1080x600.png'
+        },
+        {
+          id: 'synthetic',
+          title: 'Filtros Sintéticos',
+          description: 'Soluções avançadas para ambientes químicos agressivos e altas temperaturas.',
+          specs: ['Alta resistência química', 'Filtragem precisa', 'Retenção: 0.5-50 mícrons', 'Temperatura: até 150°C'],
+          image: 'https://matriculas.estacio.br/blog/wp-content/uploads/2022/10/engenharia-de-materiais-capa.webp'
+        },
+        {
+          id: 'composite',
+          title: 'Filtros Compostos',
+          description: 'Combinação de materiais para máxima eficiência em aplicações complexas.',
+          specs: ['Multicamadas', 'Filtragem gradual', 'Retenção: customizável', 'Alta capacidade de carga'],
+          image: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+        }
+      ];
+      
+      return React.createElement(
+        'section',
+        { 
+          id: 'products',
+          className: 'py-16 bg-neutral-50'
+        },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { className: 'text-center max-w-3xl mx-auto mb-12' },
+            React.createElement(
+              'span',
+              { className: 'text-primary-600 font-medium' },
+              'Nossos Produtos'
+            ),
+            React.createElement(
+              'h2',
+              { className: 'text-3xl font-display font-bold mt-2 mb-4' },
+              'Soluções de Filtração para Cada Necessidade'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-neutral-700' },
+              'Nossa linha de produtos combina tecnologia avançada com sustentabilidade para atender às mais diversas aplicações industriais.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'grid grid-cols-1 md:grid-cols-3 gap-8' },
+            products.map((product, index) => 
+              React.createElement(
+              TMF.UI.Card,
+              { 
+              key: index,
+              className: 'h-full flex flex-col',
+              hover: true,
+                noPadding: false
+                },
+                React.createElement(
+                  'div',
+                  { 
+                    className: 'w-[calc(100%+2rem)] -ml-4 -mt-4 mb-4 overflow-hidden rounded-t-lg',
+                    style: { marginRight: '-1rem' }
+                  },
+                  React.createElement(
+                    'img',
+                    { 
+                      src: product.image,
+                      alt: product.title,
+                      className: 'w-full aspect-video object-cover transition-transform duration-300 hover:scale-105'
+                    }
+                  )
+                ),
+                React.createElement(
+                  'h3',
+                  { className: 'text-xl font-display font-bold mb-2 text-primary-500' },
+                  product.title
+                ),
+                React.createElement(
+                  'p',
+                  { className: 'text-neutral-700 mb-4' },
+                  product.description
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'mt-auto' },
+                  React.createElement(
+                    'h4',
+                    { className: 'font-medium mb-2 text-sm text-neutral-500' },
+                    'Especificações Técnicas:'
+                  ),
+                  React.createElement(
+                    'ul',
+                    { className: 'space-y-1 mb-4' },
+                    product.specs.map((spec, i) => 
+                      React.createElement(
+                        'li',
+                        { 
+                          key: i,
+                          className: 'flex items-start'
+                        },
+                        React.createElement(
+                          'span',
+                          { className: 'text-accent-500 mr-2 text-sm' },
+                          '●'
+                        ),
+                        React.createElement(
+                          'span',
+                          { className: 'text-sm text-neutral-600' },
+                          spec
+                        )
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'pt-4 border-t border-neutral-200' },
+                    React.createElement(
+                      TMF.UI.Button,
+                      { 
+                        href: `#${product.id}`,
+                        variant: 'text',
+                        className: 'text-sm'
+                      },
+                      'Ver Detalhes'
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'mt-12 text-center' },
+            React.createElement(
+              TMF.UI.Button,
+              { 
+                variant: 'primary',
+                href: '#products-all'
+              },
+              'Ver Todos os Produtos'
+            )
+          )
+        )
+      );
+    };
+
+    // Sustainable Advantages Component
+    TMF.Section.SustainableAdvantages = () => {
+      // This component would normally use Recharts, but for simplicity in this example
+      // we'll just create a static representation of the charts
+      
+      const advantages = [
+        {
+          title: 'Redução de Resíduos',
+          description: 'Menos descarte com maior vida útil',
+          tmf: 85,
+          competitorA: 45,
+          competitorB: 40,
+          unit: '%'
+        },
+        {
+          title: 'Economia de Energia',
+          description: 'Menor consumo no ciclo de vida',
+          tmf: 65,
+          competitorA: 40,
+          competitorB: 35,
+          unit: '%'
+        },
+        {
+          title: 'Ciclo de Vida Estendido',
+          description: 'Operação por períodos mais longos',
+          tmf: 18,
+          competitorA: 10,
+          competitorB: 8,
+          unit: 'meses'
+        },
+        {
+          title: 'Pegada de Carbono',
+          description: 'Menor impacto ambiental',
+          tmf: 30,
+          competitorA: 75,
+          competitorB: 80,
+          unit: 'kg CO₂'
+        }
+      ];
+      
+      return React.createElement(
+        'section',
+        { 
+          id: 'sustainability',
+          className: 'py-16 bg-white'
+        },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { className: 'text-center max-w-3xl mx-auto mb-12' },
+            React.createElement(
+              'span',
+              { className: 'text-accent-500 font-medium' },
+              'Sustentabilidade'
+            ),
+            React.createElement(
+              'h2',
+              { className: 'text-3xl font-display font-bold mt-2 mb-4' },
+              'Vantagens Ambientais Mensuráveis'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-neutral-700' },
+              'Nossos produtos não apenas entregam performance superior, mas também proporcionam benefícios ambientais significativos em comparação com filtros convencionais.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'grid grid-cols-1 md:grid-cols-2 gap-8' },
+            advantages.map((advantage, index) => 
+              React.createElement(
+                TMF.UI.Card,
+                { 
+                  key: index,
+                  className: 'h-full'
+                },
+                React.createElement(
+                  'h3',
+                  { className: 'text-xl font-display font-bold mb-1' },
+                  advantage.title
+                ),
+                React.createElement(
+                  'p',
+                  { className: 'text-sm text-neutral-600 mb-4' },
+                  advantage.description
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'space-y-4' },
+                  React.createElement(
+                    'div',
+                    { className: 'space-y-2' },
+                    React.createElement(
+                      'div',
+                      { className: 'flex justify-between items-center' },
+                      React.createElement(
+                        'span',
+                        { className: 'text-sm font-medium' },
+                        'TMF Fibers'
+                      ),
+                      React.createElement(
+                        'span',
+                        { className: 'text-sm font-bold' },
+                        `${advantage.tmf}${advantage.unit}`
+                      )
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'w-full bg-neutral-200 rounded-full h-2.5' },
+                      React.createElement(
+                        'div',
+                        { 
+                          className: 'bg-accent-500 h-2.5 rounded-full',
+                          style: { width: `${Math.min(advantage.tmf, 100)}%` }
+                        }
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'space-y-2' },
+                    React.createElement(
+                      'div',
+                      { className: 'flex justify-between items-center' },
+                      React.createElement(
+                        'span',
+                        { className: 'text-sm font-medium' },
+                        'Concorrente A'
+                      ),
+                      React.createElement(
+                        'span',
+                        { className: 'text-sm' },
+                        `${advantage.competitorA}${advantage.unit}`
+                      )
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'w-full bg-neutral-200 rounded-full h-2.5' },
+                      React.createElement(
+                        'div',
+                        { 
+                          className: 'bg-neutral-400 h-2.5 rounded-full',
+                          style: { width: `${Math.min(advantage.competitorA, 100)}%` }
+                        }
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'space-y-2' },
+                    React.createElement(
+                      'div',
+                      { className: 'flex justify-between items-center' },
+                      React.createElement(
+                        'span',
+                        { className: 'text-sm font-medium' },
+                        'Concorrente B'
+                      ),
+                      React.createElement(
+                        'span',
+                        { className: 'text-sm' },
+                        `${advantage.competitorB}${advantage.unit}`
+                      )
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'w-full bg-neutral-200 rounded-full h-2.5' },
+                      React.createElement(
+                        'div',
+                        { 
+                          className: 'bg-neutral-400 h-2.5 rounded-full',
+                          style: { width: `${Math.min(advantage.competitorB, 100)}%` }
+                        }
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'mt-12 text-center' },
+            React.createElement(
+              TMF.UI.Button,
+              { 
+                variant: 'accent',
+                href: '#sustainability-page'
+              },
+              'Conheça Nossa Iniciativa Verde'
+            )
+          )
+        )
+      );
+    };
+
+    // Industry Applications Component
+    TMF.Section.IndustryApplications = () => {
+      const industries = [
+        {
+          id: 'automotive',
+          name: 'Automotivo',
+          description: 'Filtros para sistemas hidráulicos, lubrificação e refrigeração.',
+          icon: '🚗', // Car emoji
+          tags: ['Fluídos hidráulicos', 'Óleos', 'Combustíveis'],
+          color: 'border-blue-500'
+        },
+        {
+          id: 'food',
+          name: 'Alimentos e Bebidas',
+          description: 'Soluções para tratamento de água, purificação e separação.',
+          icon: '🍽️', // Fork and knife with plate emoji
+          tags: ['Purificação', 'Controle bacteriano', 'Líquidos'],
+          color: 'border-green-500'
+        },
+        {
+          id: 'chemical',
+          name: 'Químico e Petroquímico',
+          description: 'Filtração de fluídos corrosivos e processos industriais complexos.',
+          icon: '🧪', // Test tube emoji
+          tags: ['Alta corrosão', 'Segurança', 'Precisão'],
+          color: 'border-purple-500'
+        },
+        {
+          id: 'pharma',
+          name: 'Farmacêutico',
+          description: 'Filtros estéreis e de alta precisão para processos controlados.',
+          icon: '💊', // Pill emoji
+          tags: ['Esterilização', 'GMP', 'Micro-filtragem'],
+          color: 'border-red-500'
+        },
+        {
+          id: 'paper',
+          name: 'Papel e Celulose',
+          description: 'Especialização em tratamento de efluentes e processos produtivos.',
+          icon: '📜', // Scroll emoji
+          tags: ['Efluentes', 'Branqueamento', 'Recuperação'],
+          color: 'border-amber-500'
+        },
+        {
+          id: 'textile',
+          name: 'Têxtil',
+          description: 'Filtros para sistemas de tingimento e tratamento de água.',
+          icon: '🧵', // Thread emoji
+          tags: ['Tingimento', 'Efluentes', 'Economia circular'],
+          color: 'border-indigo-500'
+        },
+        {
+          id: 'metallurgical',
+          name: 'Metalúrgico',
+          description: 'Sistemas de arrefecimento e lubrificação em alta performance.',
+          icon: '⚙️', // Gear emoji
+          tags: ['Refrigeração', 'Óleos', 'Partículas metálicas'],
+          color: 'border-gray-500'
+        },
+        {
+          id: 'steel',
+          name: 'Siderúrgico',
+          description: 'Aplicações de alta temperatura e remoção de particulados.',
+          icon: '🔥', // Fire emoji
+          tags: ['Alta temperatura', 'Particulados', 'Gases'],
+          color: 'border-orange-500'
+        }
+      ];
+      
+      return React.createElement(
+        'section',
+        { 
+          id: 'applications',
+          className: 'py-16 bg-neutral-50'
+        },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { className: 'text-center max-w-3xl mx-auto mb-12' },
+            React.createElement(
+              'span',
+              { className: 'text-primary-600 font-medium' },
+              'Aplicações Industriais'
+            ),
+            React.createElement(
+              'h2',
+              { className: 'text-3xl font-display font-bold mt-2 mb-4' },
+              'Soluções Especializadas para Cada Setor'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-neutral-700' },
+              'Oferecemos produtos projetados especificamente para atender aos desafios únicos de cada indústria, com foco em desempenho e sustentabilidade.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6' },
+            industries.map((industry, index) => 
+              React.createElement(
+                TMF.UI.Card,
+                { 
+                  key: index,
+                  variant: 'default',
+                  hover: true,
+                  className: `h-full flex flex-col ${industry.color} border-t-4`
+                },
+                React.createElement(
+                  'div',
+                  { className: 'flex items-start space-x-4' },
+                  React.createElement(
+                    'div',
+                    { className: 'bg-primary-100 p-3 rounded-full text-2xl' },
+                    industry.icon
+                  ),
+                  React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                      'h3',
+                      { className: `font-display font-bold text-lg text-neutral-900 mb-2` },
+                      industry.name
+                    ),
+                    React.createElement(
+                      'p',
+                      { className: 'text-neutral-700 text-sm' },
+                      industry.description
+                    )
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'flex flex-wrap gap-2 mt-4' },
+                  industry.tags.map((tag, i) => 
+                    React.createElement(
+                      'span',
+                      { 
+                        key: i,
+                        className: 'px-2 py-1 bg-neutral-100 text-neutral-700 rounded text-xs'
+                      },
+                      tag
+                    )
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'mt-4 pt-4 border-t border-neutral-200' },
+                  React.createElement(
+                    TMF.UI.Button,
+                    {
+                      variant: 'text',
+                      href: `#${industry.id}`,
+                      className: 'text-sm'
+                    },
+                    'Saiba mais'
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'mt-12 text-center' },
+            React.createElement(
+              TMF.UI.Button,
+              { 
+                variant: 'primary',
+                href: '#applications-all'
+              },
+              'Ver Todas as Aplicações'
+            )
+          )
+        )
+      );
+    };
+
+    // Main CTA Component
+    TMF.Section.MainCTA = () => {
+      return React.createElement(
+        'section',
+        { className: 'py-16 bg-white' },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { 
+              className: 'bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg shadow-lg py-12 px-8 text-center text-white'
+            },
+            React.createElement(
+              'h2',
+              { className: 'text-3xl font-display font-bold mb-4' },
+              'Pronto para Otimizar seus Sistemas de Filtração?'
+            ),
+            React.createElement(
+              'p',
+              { className: 'max-w-3xl mx-auto mb-8 opacity-90' },
+              'Entre em contato com nossos especialistas para uma consultoria personalizada e descubra como nossas soluções podem aprimorar seus processos industriais.'
+            ),
+            React.createElement(
+              'div',
+              { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
+              React.createElement(
+                TMF.UI.Button,
+                { 
+                  variant: 'accent',
+                  size: 'lg',
+                  href: '#contact',
+                  className: 'flex items-center justify-center'
+                },
+                React.createElement(
+                  'svg',
+                  { 
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "20",
+                    height: "20",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    className: 'mr-2'
+                  },
+                  React.createElement('path', { d: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" })
+                ),
+                'Fale com um Especialista'
+              ),
+              React.createElement(
+                TMF.UI.Button,
+                { 
+                  variant: 'outline',
+                  size: 'lg',
+                  href: '#applications',
+                  className: 'border-white text-white hover:bg-white hover:text-primary-500 flex items-center justify-center'
+                },
+                'Explore Nossas Soluções por Segmento',
+                React.createElement(
+                  'svg',
+                  { 
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "20",
+                    height: "20",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    className: 'ml-2'
+                  },
+                  React.createElement('line', { x1: "5", y1: "12", x2: "19", y2: "12" }),
+                  React.createElement('polyline', { points: "12 5 19 12 12 19" })
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Footer Component
+    TMF.Layout.Footer = () => {
+      const currentYear = new Date().getFullYear();
+      
+      const links = {
+        company: [
+          { name: 'Sobre Nós', href: '#about' },
+          { name: 'Sustentabilidade', href: '#sustainability' },
+          { name: 'Clientes', href: '#clients' },
+          { name: 'Tecnologia', href: '#technology' },
+          { name: 'Blog', href: '#blog' }
+        ],
+        products: [
+          { name: 'Filtros de Celulose', href: '#cellulose' },
+          { name: 'Filtros Sintéticos', href: '#synthetic' },
+          { name: 'Filtros Compostos', href: '#composite' },
+          { name: 'Elementos Filtrantes', href: '#elements' },
+          { name: 'Sistemas Integrados', href: '#systems' }
+        ],
+        applications: [
+          { name: 'Automotivo', href: '#automotive' },
+          { name: 'Alimentos e Bebidas', href: '#food' },
+          { name: 'Químico e Petroquímico', href: '#chemical' },
+          { name: 'Farmacêutico', href: '#pharma' },
+          { name: 'Ver todos', href: '#applications-all' }
+        ]
+      };
+      
+      const socialLinks = [
+        { name: 'LinkedIn', href: '#', icon: 'linkedin' },
+        { name: 'Facebook', href: '#', icon: 'facebook-f' },
+        { name: 'Instagram', href: '#', icon: 'instagram' },
+        { name: 'YouTube', href: '#', icon: 'youtube' }
+      ];
+      
+      const renderIcon = (name, className = 'w-5 h-5') => {
+        return React.createElement(
+          'i',
+          { 
+            className: `fab fa-${name} ${className}`
+          }
+        );
+      };
+      
+      return React.createElement(
+        'footer',
+        { className: 'bg-neutral-800 text-white pt-16 pb-8' },
+        React.createElement(
+          'div',
+          { className: 'container mx-auto px-4' },
+          React.createElement(
+            'div',
+            { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12' },
+            // Company Info
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'a',
+                { href: '/', className: 'flex items-center mb-6' },
+                React.createElement(
+                  'span',
+                  { className: 'text-2xl font-display font-bold' },
+                  'TMF',
+                  React.createElement(
+                    'span',
+                    { className: 'text-accent-400' },
+                    'Fibers'
+                  )
+                )
+              ),
+              React.createElement(
+                'p',
+                { className: 'text-neutral-400 mb-4' },
+                'Tecnologia brasileira para filtração industrial com alta eficiência e compromisso com a sustentabilidade.'
+              ),
+              React.createElement(
+                'div',
+                { className: 'space-y-3' },
+                React.createElement(
+                  'div',
+                  { className: 'flex items-start' },
+                  React.createElement(
+                    'div',
+                    { className: 'text-accent-400 mr-3 mt-1' },
+                    React.createElement(
+                      'i',
+                      { className: 'fas fa-map-marker-alt w-5 h-5' }
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'text-neutral-300 text-sm' },
+                    React.createElement('p', {}, 'Rua Exemplo, 123'),
+                    React.createElement('p', {}, 'Ribeirão Pires, SP'),
+                    React.createElement('p', {}, 'CEP 09400-000')
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'flex items-center' },
+                  React.createElement(
+                    'div',
+                    { className: 'text-accent-400 mr-3' },
+                    React.createElement(
+                      'i',
+                      { className: 'fas fa-phone w-5 h-5' }
+                    )
+                  ),
+                  React.createElement(
+                    'p',
+                    { className: 'text-neutral-300' },
+                    '(11) 4123-4567'
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'flex items-center' },
+                  React.createElement(
+                    'div',
+                    { className: 'text-accent-400 mr-3' },
+                    React.createElement(
+                      'i',
+                      { className: 'fas fa-envelope w-5 h-5' }
+                    )
+                  ),
+                  React.createElement(
+                    'a',
+                    { href: 'mailto:contato@tmffibers.com.br', className: 'text-neutral-300 hover:text-white' },
+                    'contato@tmffibers.com.br'
+                  )
+                )
+              )
+            ),
+            
+            // Links Grid
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'h3',
+                { className: 'text-lg font-display font-bold mb-4' },
+                'Empresa'
+              ),
+              React.createElement(
+                'ul',
+                { className: 'space-y-2' },
+                links.company.map((link, index) => 
+                  React.createElement(
+                    'li',
+                    { key: index },
+                    React.createElement(
+                      'a',
+                      { 
+                        href: link.href,
+                        className: 'text-neutral-400 hover:text-white flex items-center'
+                      },
+                      React.createElement(
+                        'svg',
+                        { 
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "16",
+                          height: "16",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          strokeWidth: "2",
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          className: 'mr-2'
+                        },
+                        React.createElement('polyline', { points: "9 18 15 12 9 6" })
+                      ),
+                      link.name
+                    )
+                  )
+                )
+              )
+            ),
+            
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'h3',
+                { className: 'text-lg font-display font-bold mb-4' },
+                'Produtos'
+              ),
+              React.createElement(
+                'ul',
+                { className: 'space-y-2' },
+                links.products.map((link, index) => 
+                  React.createElement(
+                    'li',
+                    { key: index },
+                    React.createElement(
+                      'a',
+                      { 
+                        href: link.href,
+                        className: 'text-neutral-400 hover:text-white flex items-center'
+                      },
+                      React.createElement(
+                        'svg',
+                        { 
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "16",
+                          height: "16",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          strokeWidth: "2",
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          className: 'mr-2'
+                        },
+                        React.createElement('polyline', { points: "9 18 15 12 9 6" })
+                      ),
+                      link.name
+                    )
+                  )
+                )
+              )
+            ),
+            
+            // Newsletter
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'h3',
+                { className: 'text-lg font-display font-bold mb-4' },
+                'Newsletter'
+              ),
+              React.createElement(
+                'p',
+                { className: 'text-neutral-400 mb-4' },
+                'Inscreva-se para receber novidades, atualizações técnicas e convites para eventos.'
+              ),
+              React.createElement(
+                'form',
+                { 
+                  className: 'flex flex-col space-y-3',
+                  onSubmit: (e) => e.preventDefault()
+                },
+                React.createElement(
+                  'input',
+                  { 
+                    type: 'email',
+                    placeholder: 'Seu e-mail',
+                    className: 'bg-neutral-700 border border-neutral-600 rounded-md py-2 px-4 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent'
+                  }
+                ),
+                React.createElement(
+                  TMF.UI.Button,
+                  { 
+                    variant: 'accent',
+                    type: 'submit'
+                  },
+                  'Inscrever-se'
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'mt-6' },
+                React.createElement(
+                  'h4',
+                  { className: 'text-sm font-medium mb-3' },
+                  'Siga-nos:'
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'flex space-x-4' },
+                  socialLinks.map((link, index) => 
+                    React.createElement(
+                      'a',
+                      { 
+                        key: index,
+                        href: link.href,
+                        className: 'text-neutral-400 hover:text-white'
+                      },
+                      renderIcon(link.icon)
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          
+          // Copyright and Legal
+          React.createElement(
+            'div',
+            { className: 'pt-8 border-t border-neutral-700 mt-8 text-sm text-neutral-500' },
+            React.createElement(
+              'div',
+              { className: 'flex flex-col md:flex-row justify-between items-center' },
+              React.createElement(
+                'p',
+                null,
+                '© ',
+                currentYear,
+                ' TMF Fibers. Todos os direitos reservados.'
+              ),
+              React.createElement(
+                'div',
+                { className: 'flex space-x-4 mt-4 md:mt-0' },
+                React.createElement(
+                  'a',
+                  { href: '#privacy', className: 'hover:text-neutral-300' },
+                  'Política de Privacidade'
+                ),
+                React.createElement(
+                  'a',
+                  { href: '#terms', className: 'hover:text-neutral-300' },
+                  'Termos de Uso'
+                ),
+                React.createElement(
+                  'a',
+                  { href: '#cookies', className: 'hover:text-neutral-300' },
+                  'Cookies'
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Home Page Component
+    TMF.Page = {};
+    
+    TMF.Page.Home = () => {
+      React.useEffect(() => {
+        // Initialize Lucide icons after the component mounts
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }, []);
+      
+      return React.createElement(
+        'div',
+        { className: 'min-h-screen flex flex-col' },
+        React.createElement(TMF.Layout.Header),
+        React.createElement(
+          'main',
+          { className: 'flex-grow' },
+          React.createElement(TMF.Section.Hero),
+          React.createElement(TMF.Section.ValueProposition),
+          React.createElement(TMF.Section.ProductCategories),
+          React.createElement(TMF.Section.SustainableAdvantages),
+          React.createElement(TMF.Section.IndustryApplications),
+          React.createElement(TMF.Section.MainCTA)
+        ),
+        React.createElement(TMF.Layout.Footer)
+      );
+    };
+
+    // GHL Style Override Function - Direct DOM manipulation approach
+    function overrideGHLStyles() {
+      // Modify existing style tag
+      if (document.getElementsByTagName("style").length > 0) {
+        const existingStyle = document.getElementsByTagName("style")[0].innerHTML;
+        document.getElementsByTagName("style")[0].innerHTML = existingStyle + `
+          /* Strong GHL overrides */
+          body .c-row, body div.c-row, body section.c-row { padding-left: 0 !important; padding-right: 0 !important; }
+          body .hl_page-preview--content, body .hl_page-preview--content [class*="col-"] { padding: 0 !important; margin: 0 !important; }
+          @media only screen and (max-width: 767px) {
+            body .c-row, body div.c-row, body section.c-row { padding-left: 0 !important; padding-right: 0 !important; }
+            body .hl_page-preview--content [class*="col-"] { padding: 0 !important; margin: 0 !important; }
+          }
+        `;
+      }
+      
+      // Add a new forceful override style
+      const forceStyle = document.createElement('style');
+      forceStyle.setAttribute('type', 'text/css');
+      forceStyle.setAttribute('id', 'ghl-force-override');
+      forceStyle.innerHTML = `
+        .c-row[style*="padding"], div.c-row[style*="padding"], section.c-row[style*="padding"] { padding-left: 0 !important; padding-right: 0 !important; }
+        .hl_page-preview--content[style*="padding"], .hl_page-preview--content [class*="col-"][style*="padding"] { padding: 0 !important; margin: 0 !important; }
+      `;
+      document.head.appendChild(forceStyle);
+      
+      // Direct style application to elements
+      setTimeout(() => {
+        // Handle c-row elements
+        const rows = document.querySelectorAll('.c-row');
+        for (let i = 0; i < rows.length; i++) {
+          rows[i].style.paddingLeft = '0';
+          rows[i].style.paddingRight = '0';
+        }
+        
+        // Handle page preview content
+        const previewContent = document.querySelectorAll('.hl_page-preview--content');
+        for (let i = 0; i < previewContent.length; i++) {
+          previewContent[i].style.padding = '0';
+          previewContent[i].style.margin = '0';
+        }
+        
+        // Handle specific column classes
+        const columns = document.querySelectorAll('.hl_page-preview--content [class*="col-"]');
+        for (let i = 0; i < columns.length; i++) {
+          columns[i].style.padding = '0';
+          columns[i].style.margin = '0';
+        }
+        
+        // Add mutation observer to handle dynamically added content
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+              mutation.addedNodes.forEach((node) => {
+                // Check if added node is element with problematic classes
+                if (node.classList && (node.classList.contains('c-row') || 
+                    node.classList.contains('hl_page-preview--content') || 
+                    (node.className && node.className.includes('col-')))) {
+                  node.style.padding = '0';
+                  node.style.margin = '0';
+                }
+              });
+            }
+          });
+        });
+        
+        // Start observing the document
+        observer.observe(document.body, { 
+          childList: true, 
+          subtree: true
+        });
+      }, 100); // Small delay to ensure elements are rendered
+    }
+
+    // Render the App
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(TMF.Page.Home));
+    
+    // Apply style overrides after render
+    overrideGHLStyles();
+    // Also apply on window load and periodically after load
+    window.addEventListener('load', () => {
+      overrideGHLStyles();
+      // Apply repeatedly to catch any late-loaded styles or dynamic content
+      setInterval(overrideGHLStyles, 1000);
+    });
+  </script>
+</body>
+</html>

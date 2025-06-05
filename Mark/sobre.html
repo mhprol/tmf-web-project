@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós | TMF Fibers - Nossa História</title>
+  <meta name="description" content="Conheça a TMF Fibers: 20 anos de história, inovação e compromisso com a sustentabilidade na indústria de filtração brasileira.">
+  <meta name="keywords" content="sobre TMF Fibers, história, missão, valores, equipe, filtração industrial Brasil">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Sobre Nós | TMF Fibers">
+  <meta property="og:description" content="Duas décadas transformando a indústria de filtração com tecnologia e sustentabilidade.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tmffibers.com.br/sobre">
+  <meta property="og:image" content="https://tmffibers.com.br/img/sobre-og.jpg">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script>
+    // Suppress Tailwind CDN production warning
+    const originalWarn = console.warn;
+    console.warn = function(message) {
+      if (message && message.includes && message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return;
+      }
+      originalWarn.apply(console, arguments);
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Restore console.warn after Tailwind loads
+    setTimeout(() => { console.warn = originalWarn; }, 100);
+    
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e6f1f9',
+              100: '#cce3f3',
+              200: '#99c7e7',
+              300: '#66abdb',
+              400: '#328CC1',
+              500: '#0B3C5D',
+              600: '#0a3553',
+              700: '#082e48',
+              800: '#06273d',
+              900: '#052032',
+            },
+            secondary: {
+              50: '#e9f4fb',
+              100: '#d3e9f7',
+              200: '#a7d3ef',
+              300: '#7abde7',
+              400: '#328CC1',
+              500: '#2a75a7',
+              600: '#225e86',
+              700: '#1a4764',
+              800: '#133043',
+              900: '#0b1821',
+            },
+            accent: {
+              50: '#e7f2e9',
+              100: '#cfe5d3',
+              200: '#9fcba7',
+              300: '#6fb17b',
+              400: '#3f974f',
+              500: '#1D5E2A',
+              600: '#174b22',
+              700: '#123819',
+              800: '#0c2611',
+              900: '#061308',
+            },
+            highlight: {
+              50: '#fdf9e7',
+              100: '#faf3cf',
+              200: '#f5e79f',
+              300: '#f0db6f',
+              400: '#ebcf3f',
+              500: '#D9B310',
+              600: '#ae8f0d',
+              700: '#826b0a',
+              800: '#574806',
+              900: '#2b2403',
+            },
+            neutral: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'sans-serif'],
+            'body': ['Open Sans', 'sans-serif'],
+            'mono': ['Roboto Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  
+  <style>
+    /* Custom styles for dropdowns */
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    /* GHL Platform Overrides */
+    .c-row {
+      padding: 0 !important;
+    }
+    
+    /* Fix for dropdown interaction gap */
+    .dropdown::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+    
+    /* Mobile overrides for GHL */
+    @media (max-width: 768px) {
+      .c-row {
+        margin: 0 !important;
+      }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="font-body text-neutral-800 bg-white">
+  <div id="root"></div>
+  
+  <script>
+    const { createElement: h, useState, useEffect, Fragment } = React;
+    
+    // Design system colors
+    const colors = {
+      primary: "#0B3C5D",
+      secondary: "#328CC1",
+      accent: "#1D5E2A",
+      highlight: "#D9B310",
+      light: "#F5F5F5",
+      dark: "#2A2A2A"
+    };
+    
+    // Header Component (reused)
+    const Header = () => {
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [searchOpen, setSearchOpen] = useState(false);
+      
+      const navItems = [
+        { name: "Home", url: "/" },
+        { 
+          name: "Produtos", 
+          url: "/produtos",
+          submenu: [
+            { name: "Filtros de Celulose", url: "/produtos#celulose" },
+            { name: "Filtros Sintéticos", url: "/produtos#sinteticos" },
+            { name: "Filtros Compostos", url: "/produtos#compostos" },
+            { name: "Elementos Filtrantes", url: "/produtos#elementos" },
+            { name: "Sistemas Integrados", url: "/produtos#sistemas" }
+          ]
+        },
+        { 
+          name: "Aplicações", 
+          url: "/aplicacoes",
+          submenu: [
+            { name: "Alimentar", url: "/aplicacoes#alimentar" },
+            { name: "Químico", url: "/aplicacoes#quimico" },
+            { name: "Farmacêutico", url: "/aplicacoes#farmaceutico" },
+            { name: "Automotivo", url: "/aplicacoes#automotivo" },
+            { name: "Petrolífero", url: "/aplicacoes#petrolifero" },
+            { name: "Têxtil", url: "/aplicacoes#textil" },
+            { name: "Siderúrgico", url: "/aplicacoes#siderurgico" }
+          ]
+        },
+        { name: "Sustentabilidade", url: "/sustentabilidade" },
+        { name: "Sobre Nós", url: "/sobre" },
+        { name: "Contato", url: "/contato" }
+      ];
+      
+      return h('header', { className: 'sticky top-0 z-50 shadow-md bg-white' },
+        h('div', { className: 'container mx-auto px-4 py-3' },
+          h('div', { className: 'flex justify-between items-center' },
+            // Logo
+            h('div', { className: 'flex-shrink-0' },
+              h('a', { href: '/', className: 'flex items-center' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'hidden md:block text-xs text-accent-500' }, 'We Are Green')
+                )
+              )
+            ),
+            
+            // Desktop Navigation
+            h('nav', { className: 'hidden lg:flex items-center space-x-8' },
+              navItems.map(item => 
+                h('div', { key: item.name, className: 'relative dropdown' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium transition duration-150 ease-in-out'
+                  }, item.name),
+                  
+                  item.submenu && h('div', { 
+                    className: 'dropdown-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'
+                  },
+                    h('div', { className: 'py-1' },
+                      item.submenu.map(subitem =>
+                        h('a', {
+                          key: subitem.name,
+                          href: subitem.url,
+                          className: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            
+            // Right side icons
+            h('div', { className: 'flex items-center' },
+              // Search button
+              h('button', { 
+                onClick: () => setSearchOpen(!searchOpen),
+                className: 'p-2 text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: searchOpen ? 'fas fa-times' : 'fas fa-search' })
+              ),
+              
+              // Contact button
+              h('a', { 
+                href: '/contato',
+                className: 'hidden md:flex items-center ml-4 px-4 py-2 rounded-md font-medium bg-accent-500 text-white hover:bg-accent-600'
+              },
+                h('i', { className: 'fas fa-phone mr-2' }),
+                h('span', null, 'Fale Conosco')
+              ),
+              
+              // Mobile menu button
+              h('button', { 
+                onClick: () => setMobileMenuOpen(!mobileMenuOpen),
+                className: 'ml-4 p-2 lg:hidden text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars' })
+              )
+            )
+          ),
+          
+          // Search box
+          searchOpen && h('div', { className: 'pt-3 pb-2' },
+            h('div', { className: 'relative' },
+              h('input', {
+                type: 'text',
+                placeholder: 'Buscar produtos, aplicações...',
+                className: 'w-full px-4 py-2 border border-primary-500 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-400'
+              }),
+              h('button', { 
+                className: 'absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-gray-900'
+              },
+                h('i', { className: 'fas fa-search' })
+              )
+            )
+          )
+        ),
+        
+        // Mobile menu
+        mobileMenuOpen && h('nav', { className: 'lg:hidden bg-white border-t' },
+          h('div', { className: 'container mx-auto px-4 py-3' },
+            h('ul', { className: 'space-y-3' },
+              navItems.map(item =>
+                h('li', { key: item.name, className: 'py-2' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium block'
+                  }, item.name),
+                  
+                  item.submenu && h('ul', { className: 'pl-4 mt-2 space-y-1 border-l-2 border-gray-200' },
+                    item.submenu.map(subitem =>
+                      h('li', { key: subitem.name },
+                        h('a', {
+                          href: subitem.url,
+                          className: 'text-sm text-gray-600 hover:text-gray-900 block py-1'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // About Hero Component
+    const AboutHero = () => {
+      return h('section', { className: 'relative h-[300px] md:h-[400px] overflow-hidden' },
+        // Background with gradient overlay
+        h('div', { 
+          className: 'absolute inset-0',
+          style: {
+            backgroundImage: 'linear-gradient(rgba(11, 60, 93, 0.85), rgba(50, 140, 193, 0.85)), url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }
+        }),
+        
+        // Content
+        h('div', { className: 'relative container mx-auto px-4 h-full flex flex-col justify-center' },
+          // Breadcrumb
+          h('nav', { className: 'mb-4' },
+            h('ol', { className: 'flex items-center space-x-2 text-white/80' },
+              h('li', null,
+                h('a', { href: '/', className: 'hover:text-white transition' }, 'Home')
+              ),
+              h('li', null,
+                h('i', { className: 'fas fa-chevron-right text-xs' })
+              ),
+              h('li', { className: 'text-white font-medium' }, 'Sobre Nós')
+            )
+          ),
+          
+          // Title and subtitle
+          h('h1', { className: 'text-4xl md:text-5xl font-display font-bold text-white mb-4' },
+            'Nossa História'
+          ),
+          h('p', { className: 'text-xl text-white/90 max-w-2xl' },
+            'Há mais de 20 anos transformando a indústria de filtração no Brasil ',
+            'com tecnologia, inovação e compromisso ambiental.'
+          )
+        ),
+        
+        // Decorative wave at bottom
+        h('div', { className: 'absolute bottom-0 left-0 right-0' },
+          h('svg', { 
+            xmlns: 'http://www.w3.org/2000/svg',
+            viewBox: '0 0 1200 120',
+            preserveAspectRatio: 'none',
+            className: 'w-full h-12 md:h-16 text-white fill-current'
+          },
+            h('path', { 
+              d: 'M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z'
+            })
+          )
+        )
+      );
+    };
+    
+    // Company History Component
+    const CompanyHistory = () => {
+      const milestones = [
+        {
+          year: '2003',
+          title: 'Fundação da TMF Fibers',
+          description: 'Início das operações em Ribeirão Pires com foco em filtração sustentável',
+          icon: 'fas fa-calendar',
+          highlight: true
+        },
+        {
+          year: '2008',
+          title: 'Primeira Patente Verde',
+          description: 'Desenvolvimento da tecnologia de filtros biodegradáveis de alta eficiência',
+          icon: 'fas fa-award',
+          highlight: false
+        },
+        {
+          year: '2013',
+          title: 'Expansão Nacional',
+          description: 'Abertura de centros de distribuição em 5 estados brasileiros',
+          icon: 'fas fa-chart-line',
+          highlight: false
+        },
+        {
+          year: '2018',
+          title: 'Certificação Internacional',
+          description: 'Obtenção das certificações ISO 14001 e FSC para toda linha de produtos',
+          icon: 'fas fa-globe',
+          highlight: false
+        },
+        {
+          year: '2021',
+          title: 'Carbono Neutro',
+          description: 'Primeira empresa do setor a alcançar neutralidade de carbono no Brasil',
+          icon: 'fas fa-award',
+          highlight: true
+        },
+        {
+          year: '2024',
+          title: 'Centro de Inovação',
+          description: 'Inauguração do maior centro de P&D em filtração sustentável da América Latina',
+          icon: 'fas fa-chart-line',
+          highlight: true
+        }
+      ];
+
+      return h('section', { className: 'py-16 bg-white' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center' },
+            // Left side - Story
+            h('div', null,
+              h('h2', {
+                className: 'text-3xl font-bold mb-6',
+                style: { color: colors.primary }
+              }, 'Duas Décadas de Inovação'),
+              
+              h('p', { className: 'text-gray-600 mb-4' },
+                'A TMF Fibers nasceu em 2003 com uma visão clara: revolucionar a indústria ',
+                'de filtração através de soluções sustentáveis e eficientes. Fundada por ',
+                'engenheiros químicos apaixonados por meio ambiente, nossa empresa cresceu ',
+                'de uma pequena operação familiar para líder nacional em filtração industrial.'
+              ),
+              
+              h('p', { className: 'text-gray-600 mb-4' },
+                'Nossa jornada começou com a pergunta: "Por que não podemos ter filtros ',
+                'industriais que sejam ao mesmo tempo eficientes e ecológicos?" Essa questão ',
+                'nos levou a anos de pesquisa e desenvolvimento, resultando em tecnologias ',
+                'pioneiras que hoje definem o padrão da indústria.'
+              ),
+              
+              h('p', { className: 'text-gray-600 mb-6' },
+                'Hoje, atendemos mais de 500 empresas em todo o Brasil, ajudando-as a ',
+                'reduzir seu impacto ambiental sem comprometer a qualidade ou eficiência ',
+                'de seus processos produtivos.'
+              ),
+              
+              h('div', { className: 'grid grid-cols-3 gap-4' },
+                h('div', { className: 'text-center' },
+                  h('div', {
+                    className: 'text-3xl font-bold',
+                    style: { color: colors.accent }
+                  }, '20+'),
+                  h('div', { className: 'text-sm text-gray-600' }, 'Anos de Experiência')
+                ),
+                h('div', { className: 'text-center' },
+                  h('div', {
+                    className: 'text-3xl font-bold',
+                    style: { color: colors.secondary }
+                  }, '500+'),
+                  h('div', { className: 'text-sm text-gray-600' }, 'Clientes Ativos')
+                ),
+                h('div', { className: 'text-center' },
+                  h('div', {
+                    className: 'text-3xl font-bold',
+                    style: { color: colors.highlight }
+                  }, '15'),
+                  h('div', { className: 'text-sm text-gray-600' }, 'Patentes Registradas')
+                )
+              )
+            ),
+            
+            // Right side - Timeline
+            h('div', { className: 'relative' },
+              h('h3', {
+                className: 'text-2xl font-semibold mb-8',
+                style: { color: colors.primary }
+              }, 'Nossa Trajetória'),
+              
+              // Timeline line
+              h('div', {
+                className: 'absolute left-4 top-16 bottom-4 w-0.5',
+                style: { backgroundColor: colors.secondary + '30' }
+              }),
+              
+              h('div', { className: 'space-y-6' },
+                milestones.map((milestone, index) =>
+                  h('div', { key: index, className: 'relative flex items-start' },
+                    // Timeline dot
+                    h('div', {
+                      className: `absolute left-4 w-8 h-8 rounded-full flex items-center justify-center -translate-x-1/2 ${
+                        milestone.highlight ? 'ring-4 ring-opacity-30' : ''
+                      }`,
+                      style: {
+                        backgroundColor: milestone.highlight ? colors.accent : colors.secondary,
+                        ringColor: milestone.highlight ? colors.accent : 'transparent'
+                      }
+                    },
+                      h('i', { className: `${milestone.icon} text-white text-xs` })
+                    ),
+                    
+                    // Content
+                    h('div', { className: 'ml-16' },
+                      h('div', { className: 'flex items-center mb-1' },
+                        h('span', {
+                          className: 'font-bold text-lg mr-3',
+                          style: { color: milestone.highlight ? colors.accent : colors.secondary }
+                        }, milestone.year),
+                        h('h4', {
+                          className: 'font-semibold',
+                          style: { color: colors.dark }
+                        }, milestone.title)
+                      ),
+                      h('p', { className: 'text-gray-600 text-sm' }, milestone.description)
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Values and Mission Component
+    const ValuesAndMission = () => {
+      const values = [
+        {
+          icon: 'fas fa-heart',
+          title: 'Compromisso Ambiental',
+          description: 'Cada decisão é tomada considerando o impacto no meio ambiente e nas gerações futuras.',
+          color: colors.accent
+        },
+        {
+          icon: 'fas fa-lightbulb',
+          title: 'Inovação Constante',
+          description: 'Investimos continuamente em P&D para desenvolver soluções cada vez mais eficientes.',
+          color: colors.secondary
+        },
+        {
+          icon: 'fas fa-shield-alt',
+          title: 'Qualidade Superior',
+          description: 'Nossos produtos passam por rigorosos testes para garantir máxima performance.',
+          color: colors.primary
+        },
+        {
+          icon: 'fas fa-bullseye',
+          title: 'Foco no Cliente',
+          description: 'Desenvolvemos soluções customizadas para atender às necessidades específicas de cada indústria.',
+          color: colors.highlight
+        }
+      ];
+
+      return h('section', { className: 'py-16 bg-gray-50' },
+        h('div', { className: 'container mx-auto px-4' },
+          // Mission and Vision
+          h('div', { className: 'max-w-4xl mx-auto text-center mb-16' },
+            h('h2', {
+              className: 'text-3xl font-bold mb-8',
+              style: { color: colors.primary }
+            }, 'Missão e Visão'),
+            
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-12' },
+              h('div', { className: 'bg-white rounded-lg p-8 shadow-sm' },
+                h('div', {
+                  className: 'w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center',
+                  style: { backgroundColor: `${colors.primary}15` }
+                },
+                  h('i', {
+                    className: 'fas fa-bullseye text-3xl',
+                    style: { color: colors.primary }
+                  })
+                ),
+                h('h3', {
+                  className: 'text-xl font-semibold mb-3',
+                  style: { color: colors.primary }
+                }, 'Nossa Missão'),
+                h('p', { className: 'text-gray-600' },
+                  'Fornecer soluções de filtração industrial que combinem alta eficiência, ',
+                  'sustentabilidade e custo-benefício, contribuindo para um futuro mais ',
+                  'limpo e próspero para a indústria brasileira.'
+                )
+              ),
+              
+              h('div', { className: 'bg-white rounded-lg p-8 shadow-sm' },
+                h('div', {
+                  className: 'w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center',
+                  style: { backgroundColor: `${colors.accent}15` }
+                },
+                  h('span', { className: 'text-3xl' }, '🌍')
+                ),
+                h('h3', {
+                  className: 'text-xl font-semibold mb-3',
+                  style: { color: colors.accent }
+                }, 'Nossa Visão'),
+                h('p', { className: 'text-gray-600' },
+                  'Ser reconhecida globalmente como a empresa referência em filtração ',
+                  'sustentável, liderando a transformação verde da indústria e inspirando ',
+                  'práticas ambientalmente responsáveis.'
+                )
+              )
+            )
+          ),
+          
+          // Values
+          h('div', null,
+            h('h2', {
+              className: 'text-3xl font-bold text-center mb-12',
+              style: { color: colors.primary }
+            }, 'Nossos Valores'),
+            
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6' },
+              values.map((value, index) =>
+                h('div', {
+                  key: index,
+                  className: 'bg-white rounded-lg p-6 text-center hover:shadow-lg transition-shadow duration-300'
+                },
+                  h('div', {
+                    className: 'w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center',
+                    style: { backgroundColor: `${value.color}15` }
+                  },
+                    h('i', {
+                      className: `${value.icon} text-3xl`,
+                      style: { color: value.color }
+                    })
+                  ),
+                  
+                  h('h3', {
+                    className: 'text-lg font-semibold mb-3',
+                    style: { color: value.color }
+                  }, value.title),
+                  
+                  h('p', { className: 'text-gray-600 text-sm' }, value.description)
+                )
+              )
+            )
+          ),
+          
+          // Company Culture
+          h('div', { className: 'mt-16 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-8' },
+            h('div', { className: 'max-w-3xl mx-auto text-center' },
+              h('h3', {
+                className: 'text-2xl font-semibold mb-4',
+                style: { color: colors.primary }
+              }, 'Cultura TMF'),
+              h('p', { className: 'text-gray-700 mb-6' },
+                'Na TMF Fibers, acreditamos que o sucesso vai além dos números. Nossa cultura ',
+                'é baseada em colaboração, respeito mútuo e paixão pelo que fazemos. Valorizamos ',
+                'a diversidade de ideias e incentivamos a inovação em todos os níveis.'
+              ),
+              h('div', { className: 'flex flex-wrap justify-center gap-4' },
+                ['Integridade', 'Colaboração', 'Excelência', 'Sustentabilidade', 'Inovação'].map(trait =>
+                  h('span', {
+                    key: trait,
+                    className: 'inline-block px-6 py-2 rounded-full text-sm font-medium bg-white shadow-sm',
+                    style: { color: colors.primary }
+                  }, trait)
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Team Section Component
+    const TeamSection = () => {
+      const teamMembers = [
+        {
+          name: 'Thiago Prol',
+          role: 'Diretor Comercial',
+          photo: 'https://storage.googleapis.com/msgsndr/z43yPMqfh4IteF0CUxld/media/684192265f5470cf89bc2888.jpeg',
+          bio: 'Lidera as estratégias comerciais e relacionamento com clientes industriais.',
+          linkedin: '#',
+          email: 'thiago.prol@tmffibers.com.br'
+        },
+        {
+          name: 'Marcelo Lima',
+          role: 'Diretor de Produção',
+          photo: 'https://storage.googleapis.com/msgsndr/z43yPMqfh4IteF0CUxld/media/684192265f5470267cbc2887.jpeg',
+          bio: 'Responsável pela excelência operacional e inovação nos processos produtivos.',
+          linkedin: '#',
+          email: 'marcelo.lima@tmffibers.com.br'
+        },
+        {
+          name: 'Matheus Prol',
+          role: 'Diretor de Marketing',
+          photo: 'https://storage.googleapis.com/msgsndr/z43yPMqfh4IteF0CUxld/media/68338209968167689fc1a4ff.webp',
+          bio: 'Conecta a marca TMF Fibers ao mercado através de estratégias digitais inovadoras.',
+          linkedin: '#',
+          email: 'matheus.prol@tmffibers.com.br'
+        }
+      ];
+
+      return h('section', { className: 'py-16 bg-white' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', {
+              className: 'text-3xl font-bold mb-4',
+              style: { color: colors.primary }
+            }, 'Nossa Equipe de Liderança'),
+            h('p', { className: 'text-lg text-gray-600 max-w-3xl mx-auto' },
+              'Conheça os profissionais dedicados que lideram a TMF Fibers rumo a um ',
+              'futuro mais sustentável para a indústria brasileira.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' },
+            teamMembers.map((member, index) =>
+              h('div', {
+                key: index,
+                className: 'bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300'
+              },
+                h('div', { className: 'relative h-64 overflow-hidden' },
+                  h('img', {
+                    src: member.photo,
+                    alt: member.name,
+                    className: 'w-full h-full object-cover hover:scale-105 transition-transform duration-300'
+                  }),
+                  h('div', { className: 'absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300' })
+                ),
+                
+                h('div', { className: 'p-6' },
+                  h('h3', {
+                    className: 'text-xl font-semibold mb-1',
+                    style: { color: colors.primary }
+                  }, member.name),
+                  h('p', {
+                    className: 'text-sm font-medium mb-3',
+                    style: { color: colors.secondary }
+                  }, member.role),
+                  h('p', { className: 'text-gray-600 text-sm mb-4' }, member.bio),
+                  
+                  h('div', { className: 'flex gap-3' },
+                    h('a', {
+                      href: member.linkedin,
+                      className: 'w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-primary-500 hover:text-white',
+                      style: {
+                        backgroundColor: `${colors.primary}15`,
+                        color: colors.primary
+                      }
+                    },
+                      h('i', { className: 'fab fa-linkedin-in' })
+                    ),
+                    h('a', {
+                      href: `mailto:${member.email}`,
+                      className: 'w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-secondary-500 hover:text-white',
+                      style: {
+                        backgroundColor: `${colors.secondary}15`,
+                        color: colors.secondary
+                      }
+                    },
+                      h('i', { className: 'fas fa-envelope' })
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+          // Team Stats
+          h('div', { className: 'mt-16 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg p-8' },
+            h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-8 text-center' },
+              h('div', null,
+                h('div', {
+                  className: 'text-3xl font-bold',
+                  style: { color: colors.primary }
+                }, '150+'),
+                h('div', { className: 'text-gray-600' }, 'Colaboradores')
+              ),
+              h('div', null,
+                h('div', {
+                  className: 'text-3xl font-bold',
+                  style: { color: colors.secondary }
+                }, '45%'),
+                h('div', { className: 'text-gray-600' }, 'Mulheres na Liderança')
+              ),
+              h('div', null,
+                h('div', {
+                  className: 'text-3xl font-bold',
+                  style: { color: colors.accent }
+                }, '12'),
+                h('div', { className: 'text-gray-600' }, 'PhDs e Mestres')
+              ),
+              h('div', null,
+                h('div', {
+                  className: 'text-3xl font-bold',
+                  style: { color: colors.highlight }
+                }, '8'),
+                h('div', { className: 'text-gray-600' }, 'Nacionalidades')
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // About CTA Component
+    const AboutCTA = () => {
+      return h('section', { className: 'py-16 relative overflow-hidden' },
+        h('div', {
+          className: 'absolute inset-0',
+          style: {
+            background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`
+          }
+        }),
+        
+        h('div', { className: 'absolute inset-0 opacity-10' },
+          h('div', {
+            className: 'absolute inset-0',
+            style: {
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '60px 60px'
+            }
+          })
+        ),
+
+        h('div', { className: 'relative z-10 container mx-auto px-4' },
+          h('div', { className: 'text-center text-white mb-12' },
+            h('h2', { className: 'text-3xl md:text-4xl font-bold mb-4 font-display' },
+              'Faça Parte da Nossa História'
+            ),
+            
+            h('p', { className: 'text-xl mb-8 max-w-3xl mx-auto' },
+              'Seja como cliente, parceiro ou colaborador, você pode fazer parte da ',
+              'transformação sustentável da indústria brasileira.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto' },
+            // Become a Client
+            h('div', { className: 'bg-white/95 backdrop-blur-sm rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300' },
+              h('i', {
+                className: 'fas fa-briefcase text-5xl mb-4',
+                style: { color: colors.primary }
+              }),
+              h('h3', {
+                className: 'font-semibold mb-2',
+                style: { color: colors.primary }
+              }, 'Seja Nosso Cliente'),
+              h('p', { className: 'text-sm text-gray-600 mb-4' },
+                'Descubra como nossas soluções podem transformar seus processos industriais'
+              ),
+              h('a', {
+                href: '/contato',
+                className: 'inline-flex items-center px-4 py-2 rounded-md font-medium transition duration-150 ease-in-out text-white',
+                style: { backgroundColor: colors.primary }
+              },
+                'Solicitar Orçamento',
+                h('i', { className: 'fas fa-arrow-right ml-2' })
+              )
+            ),
+
+            // Work With Us
+            h('div', { className: 'bg-white/95 backdrop-blur-sm rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300' },
+              h('i', {
+                className: 'fas fa-users text-5xl mb-4',
+                style: { color: colors.accent }
+              }),
+              h('h3', {
+                className: 'font-semibold mb-2',
+                style: { color: colors.accent }
+              }, 'Trabalhe Conosco'),
+              h('p', { className: 'text-sm text-gray-600 mb-4' },
+                'Junte-se a uma equipe apaixonada por inovação e sustentabilidade'
+              ),
+              h('a', {
+                href: '#carreiras',
+                className: 'inline-flex items-center px-4 py-2 rounded-md font-medium transition duration-150 ease-in-out text-white',
+                style: { backgroundColor: colors.accent }
+              },
+                'Ver Vagas Abertas',
+                h('i', { className: 'fas fa-arrow-right ml-2' })
+              )
+            ),
+
+            // Partner With Us
+            h('div', { className: 'bg-white/95 backdrop-blur-sm rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300' },
+              h('div', {
+                className: 'w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl',
+                style: { backgroundColor: `${colors.secondary}20` }
+              }, '🤝'),
+              h('h3', {
+                className: 'font-semibold mb-2',
+                style: { color: colors.secondary }
+              }, 'Seja Nosso Parceiro'),
+              h('p', { className: 'text-sm text-gray-600 mb-4' },
+                'Oportunidades de parceria para fornecedores e distribuidores'
+              ),
+              h('a', {
+                href: '/contato',
+                className: 'inline-flex items-center px-4 py-2 rounded-md font-medium transition duration-150 ease-in-out text-white',
+                style: { backgroundColor: colors.secondary }
+              },
+                'Falar com Comercial',
+                h('i', { className: 'fas fa-arrow-right ml-2' })
+              )
+            )
+          ),
+
+          // Quote Section
+          h('div', { className: 'mt-12 max-w-3xl mx-auto' },
+            h('blockquote', { className: 'text-center' },
+              h('p', { className: 'text-lg italic text-white mb-4' },
+                '"Nossa maior conquista não está nos prêmios ou certificações, mas em saber ',
+                'que cada dia contribuímos para um Brasil mais sustentável e próspero. ',
+                'Essa é a herança que queremos deixar."'
+              ),
+              h('footer', { className: 'text-white/80' },
+                h('strong', null, 'Maria Santos'), h('br'),
+                h('span', { className: 'text-sm' }, 'Diretora de P&D, TMF Fibers')
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Footer Component (reused)
+    const Footer = () => {
+      return h('footer', { className: 'bg-neutral-900 text-white pt-12 pb-6' },
+        h('div', { className: 'container mx-auto px-4' },
+          // Main footer content
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8' },
+            // Company info
+            h('div', null,
+              h('div', { className: 'flex items-center mb-4' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'block text-xs text-accent-400' }, 'We Are Green')
+                )
+              ),
+              h('p', { className: 'text-sm text-gray-400 mb-4' },
+                'Soluções avançadas em filtração industrial com compromisso ambiental e tecnologia 100% brasileira.'
+              ),
+              // Social media links
+              h('div', { className: 'flex space-x-4' },
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-facebook-f' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-linkedin-in' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-instagram' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-youtube' })
+                )
+              )
+            ),
+            
+            // Products column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Produtos'),
+              h('ul', { className: 'space-y-2 text-sm' },
+                ['Filtros de Celulose', 'Filtros Sintéticos', 'Filtros Compostos', 'Elementos Filtrantes', 'Sistemas Integrados'].map(item =>
+                  h('li', { key: item },
+                    h('a', { href: '/produtos', className: 'text-gray-400 hover:text-white transition' }, item)
+                  )
+                )
+              )
+            ),
+            
+            // Contact column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Contato'),
+              h('ul', { className: 'space-y-3 text-sm' },
+                h('li', { className: 'flex items-start' },
+                  h('i', { className: 'fas fa-map-marker-alt mt-1 mr-3 text-secondary-400' }),
+                  h('span', { className: 'text-gray-400' },
+                    'Av. Industrial, 1500', h('br'), 'Ribeirão Pires - SP', h('br'), 'CEP: 09400-000'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-phone mr-3 text-secondary-400' }),
+                  h('a', { href: 'tel:+551155551234', className: 'text-gray-400 hover:text-white transition' },
+                    '(11) 5555-1234'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-envelope mr-3 text-secondary-400' }),
+                  h('a', { href: 'mailto:contato@tmffibers.com.br', className: 'text-gray-400 hover:text-white transition' },
+                    'contato@tmffibers.com.br'
+                  )
+                )
+              )
+            )
+          ),
+          
+          // Newsletter section
+          h('div', { className: 'border-t border-gray-800 pt-8 pb-6' },
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center' },
+              h('div', null,
+                h('h4', { className: 'text-lg font-semibold mb-2' }, 'Receba Novidades'),
+                h('p', { className: 'text-sm text-gray-400' },
+                  'Cadastre-se para receber informações sobre produtos e soluções'
+                )
+              ),
+              h('form', { className: 'flex gap-2' },
+                h('input', {
+                  type: 'email',
+                  placeholder: 'Seu e-mail',
+                  className: 'flex-1 px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:border-secondary-400 text-white'
+                }),
+                h('button', {
+                  type: 'submit',
+                  className: 'px-6 py-2 bg-secondary-500 text-white rounded-md hover:bg-secondary-600 transition font-medium'
+                }, 'Inscrever')
+              )
+            )
+          ),
+          
+          // Bottom bar
+          h('div', { className: 'border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400' },
+            h('p', null,
+              '© 2024 TMF Fibers. Todos os direitos reservados.'
+            ),
+            h('div', { className: 'flex space-x-6 mt-4 md:mt-0' },
+              h('a', { href: '/privacidade', className: 'hover:text-white transition' }, 'Política de Privacidade'),
+              h('a', { href: '/termos', className: 'hover:text-white transition' }, 'Termos de Uso'),
+              h('a', { href: '/certificacoes', className: 'hover:text-white transition' }, 'Certificações')
+            )
+          )
+        )
+      );
+    };
+    
+    // Main App Component
+    const AboutPage = () => {
+      return h(Fragment, null,
+        h(Header),
+        h('main', { className: 'flex-grow' },
+          h(AboutHero),
+          h(CompanyHistory),
+          h(ValuesAndMission),
+          h(TeamSection),
+          h(AboutCTA)
+        ),
+        h(Footer)
+      );
+    };
+    
+    // Render the app
+    ReactDOM.render(h(AboutPage), document.getElementById('root'));
+  </script>
+</body>
+</html>

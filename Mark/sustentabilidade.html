@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sustentabilidade | TMF Fibers - Compromisso Verde</title>
+  <meta name="description" content="Conheça nosso compromisso com a sustentabilidade. Filtração industrial com matéria-prima 100% renovável, certificações ambientais e impacto positivo.">
+  <meta name="keywords" content="sustentabilidade, filtros ecológicos, carbono neutro, certificações ambientais, TMF Fibers">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Sustentabilidade | TMF Fibers">
+  <meta property="og:description" content="Compromisso real com o meio ambiente através de filtração industrial sustentável.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tmffibers.com.br/sustentabilidade">
+  <meta property="og:image" content="https://tmffibers.com.br/img/sustentabilidade-og.jpg">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script>
+    // Suppress Tailwind CDN production warning
+    const originalWarn = console.warn;
+    console.warn = function(message) {
+      if (message && message.includes && message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return;
+      }
+      originalWarn.apply(console, arguments);
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Restore console.warn after Tailwind loads
+    setTimeout(() => { console.warn = originalWarn; }, 100);
+    
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e6f1f9',
+              100: '#cce3f3',
+              200: '#99c7e7',
+              300: '#66abdb',
+              400: '#328CC1',
+              500: '#0B3C5D',
+              600: '#0a3553',
+              700: '#082e48',
+              800: '#06273d',
+              900: '#052032',
+            },
+            secondary: {
+              50: '#e9f4fb',
+              100: '#d3e9f7',
+              200: '#a7d3ef',
+              300: '#7abde7',
+              400: '#328CC1',
+              500: '#2a75a7',
+              600: '#225e86',
+              700: '#1a4764',
+              800: '#133043',
+              900: '#0b1821',
+            },
+            accent: {
+              50: '#e7f2e9',
+              100: '#cfe5d3',
+              200: '#9fcba7',
+              300: '#6fb17b',
+              400: '#3f974f',
+              500: '#1D5E2A',
+              600: '#174b22',
+              700: '#123819',
+              800: '#0c2611',
+              900: '#061308',
+            },
+            highlight: {
+              50: '#fdf9e7',
+              100: '#faf3cf',
+              200: '#f5e79f',
+              300: '#f0db6f',
+              400: '#ebcf3f',
+              500: '#D9B310',
+              600: '#ae8f0d',
+              700: '#826b0a',
+              800: '#574806',
+              900: '#2b2403',
+            },
+            neutral: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'sans-serif'],
+            'body': ['Open Sans', 'sans-serif'],
+            'mono': ['Roboto Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  
+  <style>
+    /* Custom styles for dropdowns */
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    /* GHL Platform Overrides */
+    .c-row {
+      padding: 0 !important;
+    }
+    
+    /* Fix for dropdown interaction gap */
+    .dropdown::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+    
+    /* Mobile overrides for GHL */
+    @media (max-width: 768px) {
+      .c-row {
+        margin: 0 !important;
+      }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom animation for pattern */
+    @keyframes pattern-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(100px, 100px); }
+    }
+    
+    .pattern-animation {
+      animation: pattern-move 40s linear infinite;
+    }
+  </style>
+</head>
+<body class="font-body text-neutral-800 bg-white">
+  <div id="root"></div>
+  
+  <script>
+    const { createElement: h, useState, useEffect, Fragment } = React;
+    
+    // Design system colors
+    const colors = {
+      primary: "#0B3C5D",
+      secondary: "#328CC1",
+      accent: "#1D5E2A",
+      highlight: "#D9B310",
+      light: "#F5F5F5",
+      dark: "#2A2A2A"
+    };
+    
+    // Header Component (reused from other pages)
+    const Header = () => {
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [searchOpen, setSearchOpen] = useState(false);
+      
+      const navItems = [
+        { name: "Home", url: "/" },
+        { 
+          name: "Produtos", 
+          url: "/produtos",
+          submenu: [
+            { name: "Filtros de Celulose", url: "/produtos#celulose" },
+            { name: "Filtros Sintéticos", url: "/produtos#sinteticos" },
+            { name: "Filtros Compostos", url: "/produtos#compostos" },
+            { name: "Elementos Filtrantes", url: "/produtos#elementos" },
+            { name: "Sistemas Integrados", url: "/produtos#sistemas" }
+          ]
+        },
+        { 
+          name: "Aplicações", 
+          url: "/aplicacoes",
+          submenu: [
+            { name: "Alimentar", url: "/aplicacoes#alimentar" },
+            { name: "Químico", url: "/aplicacoes#quimico" },
+            { name: "Farmacêutico", url: "/aplicacoes#farmaceutico" },
+            { name: "Automotivo", url: "/aplicacoes#automotivo" },
+            { name: "Petrolífero", url: "/aplicacoes#petrolifero" },
+            { name: "Têxtil", url: "/aplicacoes#textil" },
+            { name: "Siderúrgico", url: "/aplicacoes#siderurgico" }
+          ]
+        },
+        { name: "Sustentabilidade", url: "/sustentabilidade" },
+        { name: "Sobre Nós", url: "/sobre" },
+        { name: "Contato", url: "/contato" }
+      ];
+      
+      return h('header', { className: 'sticky top-0 z-50 shadow-md bg-white' },
+        h('div', { className: 'container mx-auto px-4 py-3' },
+          h('div', { className: 'flex justify-between items-center' },
+            // Logo
+            h('div', { className: 'flex-shrink-0' },
+              h('a', { href: '/', className: 'flex items-center' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'hidden md:block text-xs text-accent-500' }, 'We Are Green')
+                )
+              )
+            ),
+            
+            // Desktop Navigation
+            h('nav', { className: 'hidden lg:flex items-center space-x-8' },
+              navItems.map(item => 
+                h('div', { key: item.name, className: 'relative dropdown' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium transition duration-150 ease-in-out'
+                  }, item.name),
+                  
+                  item.submenu && h('div', { 
+                    className: 'dropdown-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'
+                  },
+                    h('div', { className: 'py-1' },
+                      item.submenu.map(subitem =>
+                        h('a', {
+                          key: subitem.name,
+                          href: subitem.url,
+                          className: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            
+            // Right side icons
+            h('div', { className: 'flex items-center' },
+              // Search button
+              h('button', { 
+                onClick: () => setSearchOpen(!searchOpen),
+                className: 'p-2 text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: searchOpen ? 'fas fa-times' : 'fas fa-search' })
+              ),
+              
+              // Contact button
+              h('a', { 
+                href: '/contato',
+                className: 'hidden md:flex items-center ml-4 px-4 py-2 rounded-md font-medium bg-accent-500 text-white hover:bg-accent-600'
+              },
+                h('i', { className: 'fas fa-phone mr-2' }),
+                h('span', null, 'Fale Conosco')
+              ),
+              
+              // Mobile menu button
+              h('button', { 
+                onClick: () => setMobileMenuOpen(!mobileMenuOpen),
+                className: 'ml-4 p-2 lg:hidden text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars' })
+              )
+            )
+          ),
+          
+          // Search box
+          searchOpen && h('div', { className: 'pt-3 pb-2' },
+            h('div', { className: 'relative' },
+              h('input', {
+                type: 'text',
+                placeholder: 'Buscar produtos, aplicações...',
+                className: 'w-full px-4 py-2 border border-primary-500 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-400'
+              }),
+              h('button', { 
+                className: 'absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-gray-900'
+              },
+                h('i', { className: 'fas fa-search' })
+              )
+            )
+          )
+        ),
+        
+        // Mobile menu
+        mobileMenuOpen && h('nav', { className: 'lg:hidden bg-white border-t' },
+          h('div', { className: 'container mx-auto px-4 py-3' },
+            h('ul', { className: 'space-y-3' },
+              navItems.map(item =>
+                h('li', { key: item.name, className: 'py-2' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium block'
+                  }, item.name),
+                  
+                  item.submenu && h('ul', { className: 'pl-4 mt-2 space-y-1 border-l-2 border-gray-200' },
+                    item.submenu.map(subitem =>
+                      h('li', { key: subitem.name },
+                        h('a', {
+                          href: subitem.url,
+                          className: 'text-sm text-gray-600 hover:text-gray-900 block py-1'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Sustainability Hero Component
+    const SustainabilityHero = () => {
+      return h('section', { className: 'relative h-[300px] md:h-[400px] overflow-hidden' },
+        // Background with gradient overlay
+        h('div', { 
+          className: 'absolute inset-0',
+          style: {
+            backgroundImage: 'linear-gradient(rgba(29, 94, 42, 0.85), rgba(50, 140, 193, 0.85)), url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }
+        }),
+        
+        // Content
+        h('div', { className: 'relative container mx-auto px-4 h-full flex flex-col justify-center' },
+          // Breadcrumb
+          h('nav', { className: 'mb-4' },
+            h('ol', { className: 'flex items-center space-x-2 text-white/80' },
+              h('li', null,
+                h('a', { href: '/', className: 'hover:text-white transition' }, 'Home')
+              ),
+              h('li', null,
+                h('i', { className: 'fas fa-chevron-right text-xs' })
+              ),
+              h('li', { className: 'text-white font-medium' }, 'Sustentabilidade')
+            )
+          ),
+          
+          // Title and subtitle
+          h('h1', { className: 'text-4xl md:text-5xl font-display font-bold text-white mb-4' },
+            'Nosso Compromisso Verde'
+          ),
+          h('p', { className: 'text-xl text-white/90 max-w-2xl' },
+            'Filtração industrial sustentável com matéria-prima 100% brasileira e renovável, ',
+            'contribuindo para um futuro mais limpo e responsável.'
+          )
+        ),
+        
+        // Decorative wave at bottom
+        h('div', { className: 'absolute bottom-0 left-0 right-0' },
+          h('svg', { 
+            xmlns: 'http://www.w3.org/2000/svg',
+            viewBox: '0 0 1200 120',
+            preserveAspectRatio: 'none',
+            className: 'w-full h-12 md:h-16 text-white fill-current'
+          },
+            h('path', { 
+              d: 'M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z'
+            })
+          )
+        )
+      );
+    };
+    
+    // Environmental Metrics Component
+    const EnvironmentalMetrics = () => {
+      const [counters, setCounters] = useState({
+        co2: 0,
+        water: 0,
+        recycled: 0,
+        renewable: 0
+      });
+
+      const metrics = [
+        {
+          id: 'co2',
+          icon: 'fas fa-leaf',
+          value: 45,
+          unit: '%',
+          label: 'Redução de CO₂',
+          description: 'Menos emissões comparado a filtros sintéticos tradicionais',
+          color: colors.accent
+        },
+        {
+          id: 'water',
+          icon: 'fas fa-tint',
+          value: 30,
+          unit: '%',
+          label: 'Economia de Água',
+          description: 'Redução no consumo durante o processo produtivo',
+          color: colors.secondary
+        },
+        {
+          id: 'recycled',
+          icon: 'fas fa-recycle',
+          value: 95,
+          unit: '%',
+          label: 'Material Reciclável',
+          description: 'Componentes podem ser reciclados ou compostados',
+          color: colors.highlight
+        },
+        {
+          id: 'renewable',
+          icon: 'fas fa-tree',
+          value: 100,
+          unit: '%',
+          label: 'Matéria-Prima Renovável',
+          description: 'Celulose de florestas certificadas e manejadas',
+          color: colors.primary
+        }
+      ];
+
+      useEffect(() => {
+        const animateCounters = () => {
+          const duration = 2000;
+          const steps = 60;
+          const stepDuration = duration / steps;
+
+          let currentStep = 0;
+
+          const interval = setInterval(() => {
+            currentStep++;
+            
+            setCounters({
+              co2: Math.round((metrics[0].value * currentStep) / steps),
+              water: Math.round((metrics[1].value * currentStep) / steps),
+              recycled: Math.round((metrics[2].value * currentStep) / steps),
+              renewable: Math.round((metrics[3].value * currentStep) / steps)
+            });
+
+            if (currentStep >= steps) {
+              clearInterval(interval);
+            }
+          }, stepDuration);
+        };
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) {
+              animateCounters();
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.5 }
+        );
+
+        const element = document.getElementById('environmental-metrics');
+        if (element) observer.observe(element);
+
+        return () => observer.disconnect();
+      }, []);
+
+      return h('section', { id: 'environmental-metrics', className: 'py-16 bg-gray-50' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', { 
+              className: 'text-3xl font-bold mb-4',
+              style: { color: colors.primary }
+            }, 'Impacto Ambiental Positivo'),
+            h('p', { className: 'text-lg text-gray-600 max-w-3xl mx-auto' },
+              'Nossos números refletem o compromisso real com a sustentabilidade. ',
+              'Cada filtro TMF representa uma escolha consciente pelo meio ambiente.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' },
+            metrics.map((metric, index) =>
+              h('div', { key: metric.id, className: 'text-center' },
+                h('div', {
+                  className: 'w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center',
+                  style: { backgroundColor: `${metric.color}15` }
+                },
+                  h('i', {
+                    className: `${metric.icon} text-5xl`,
+                    style: { color: metric.color }
+                  })
+                ),
+                
+                h('div', { className: 'mb-2' },
+                  h('span', {
+                    className: 'text-4xl font-bold',
+                    style: { color: metric.color }
+                  }, counters[metric.id]),
+                  h('span', {
+                    className: 'text-2xl font-bold ml-1',
+                    style: { color: metric.color }
+                  }, metric.unit)
+                ),
+                
+                h('h3', {
+                  className: 'text-xl font-semibold mb-2',
+                  style: { color: colors.dark }
+                }, metric.label),
+                
+                h('p', { className: 'text-sm text-gray-600' }, metric.description)
+              )
+            )
+          ),
+
+          h('div', { className: 'mt-12 bg-white rounded-lg p-8 shadow-sm' },
+            h('div', { className: 'flex flex-col md:flex-row items-center justify-between' },
+              h('div', { className: 'mb-6 md:mb-0 md:mr-8' },
+                h('h3', {
+                  className: 'text-2xl font-semibold mb-2',
+                  style: { color: colors.accent }
+                }, 'Certificado Carbono Neutro'),
+                h('p', { className: 'text-gray-600' },
+                  'Nossas operações são auditadas e certificadas para garantir a ',
+                  'neutralidade de carbono em todo o ciclo produtivo.'
+                )
+              ),
+              h('div', { className: 'flex-shrink-0' },
+                h('div', {
+                  className: 'w-32 h-32 rounded-full flex items-center justify-center text-white text-center font-bold',
+                  style: { backgroundColor: colors.accent }
+                },
+                  h('span', null, 'CARBONO', h('br'), 'NEUTRO')
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Sustainability Pillars Component
+    const SustainabilityPillars = () => {
+      const pillars = [
+        {
+          icon: 'fas fa-leaf',
+          title: 'Matéria-Prima Sustentável',
+          description: 'Utilizamos exclusivamente celulose de florestas manejadas e certificadas, garantindo a renovação dos recursos naturais.',
+          features: [
+            'Certificação FSC e PEFC',
+            'Rastreabilidade completa',
+            'Zero desmatamento',
+            'Biodegradável'
+          ],
+          color: colors.accent
+        },
+        {
+          icon: 'fas fa-industry',
+          title: 'Produção Limpa',
+          description: 'Nosso processo produtivo minimiza o impacto ambiental através de tecnologias limpas e eficiência energética.',
+          features: [
+            'Energia renovável',
+            'Tratamento de efluentes',
+            'Reuso de água',
+            'Zero resíduo ao aterro'
+          ],
+          color: colors.secondary
+        },
+        {
+          icon: 'fas fa-users',
+          title: 'Responsabilidade Social',
+          description: 'Investimos no desenvolvimento das comunidades locais e na capacitação de nossos colaboradores.',
+          features: [
+            'Empregos locais',
+            'Programas de capacitação',
+            'Apoio a cooperativas',
+            'Educação ambiental'
+          ],
+          color: colors.highlight
+        },
+        {
+          icon: 'fas fa-globe',
+          title: 'Economia Circular',
+          description: 'Nossos produtos são projetados para o ciclo completo, desde a produção até o descarte responsável.',
+          features: [
+            'Design para reciclagem',
+            'Logística reversa',
+            'Parcerias de reciclagem',
+            'Compostagem industrial'
+          ],
+          color: colors.primary
+        }
+      ];
+
+      return h('section', { className: 'py-16 bg-white' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', {
+              className: 'text-3xl font-bold mb-4',
+              style: { color: colors.primary }
+            }, 'Pilares da Sustentabilidade TMF'),
+            h('p', { className: 'text-lg text-gray-600 max-w-3xl mx-auto' },
+              'Nossa abordagem sustentável está fundamentada em quatro pilares que ',
+              'guiam todas as nossas decisões e processos.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-8' },
+            pillars.map((pillar, index) =>
+              h('div', {
+                key: index,
+                className: 'bg-gray-50 rounded-lg p-8 border-l-4 hover:shadow-lg transition-shadow duration-300',
+                style: { borderColor: pillar.color }
+              },
+                h('div', { className: 'flex items-start mb-4' },
+                  h('div', {
+                    className: 'w-16 h-16 rounded-full flex items-center justify-center mr-4 flex-shrink-0',
+                    style: { backgroundColor: `${pillar.color}20` }
+                  },
+                    h('i', {
+                      className: `${pillar.icon} text-4xl`,
+                      style: { color: pillar.color }
+                    })
+                  ),
+                  h('div', null,
+                    h('h3', {
+                      className: 'text-xl font-semibold mb-2',
+                      style: { color: pillar.color }
+                    }, pillar.title),
+                    h('p', { className: 'text-gray-600' }, pillar.description)
+                  )
+                ),
+
+                h('div', { className: 'ml-20' },
+                  h('ul', { className: 'space-y-2' },
+                    pillar.features.map((feature, idx) =>
+                      h('li', { key: idx, className: 'flex items-center text-sm text-gray-700' },
+                        h('div', {
+                          className: 'w-2 h-2 rounded-full mr-3 flex-shrink-0',
+                          style: { backgroundColor: pillar.color }
+                        }),
+                        feature
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+          h('div', { className: 'mt-12 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-8' },
+            h('div', { className: 'text-center' },
+              h('h3', {
+                className: 'text-2xl font-semibold mb-4',
+                style: { color: colors.accent }
+              }, 'Compromisso com os ODS da ONU'),
+              h('p', { className: 'text-gray-700 mb-6 max-w-3xl mx-auto' },
+                'A TMF Fibers está alinhada com os Objetivos de Desenvolvimento Sustentável ',
+                'das Nações Unidas, contribuindo ativamente para:'
+              ),
+              h('div', { className: 'flex flex-wrap justify-center gap-4' },
+                [
+                  { number: 6, text: 'Água Limpa e Saneamento' },
+                  { number: 9, text: 'Indústria, Inovação e Infraestrutura' },
+                  { number: 12, text: 'Consumo e Produção Responsáveis' },
+                  { number: 13, text: 'Ação Contra a Mudança Global do Clima' },
+                  { number: 15, text: 'Vida Terrestre' }
+                ].map(ods =>
+                  h('div', {
+                    key: ods.number,
+                    className: 'bg-white rounded-lg p-4 shadow-sm flex items-center'
+                  },
+                    h('div', {
+                      className: 'w-12 h-12 rounded-full flex items-center justify-center mr-3 font-bold text-white',
+                      style: { backgroundColor: colors.accent }
+                    }, ods.number),
+                    h('span', { className: 'text-sm font-medium text-gray-700' }, ods.text)
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Certifications Component
+    const Certifications = () => {
+      const certifications = [
+        {
+          name: 'ISO 14001:2015',
+          description: 'Sistema de Gestão Ambiental',
+          icon: 'fas fa-shield-alt',
+          details: 'Certificação internacional que comprova nosso compromisso com a gestão ambiental eficaz.'
+        },
+        {
+          name: 'FSC® Certified',
+          description: 'Forest Stewardship Council',
+          icon: 'fas fa-award',
+          details: 'Garantia de que nossa celulose vem de florestas manejadas de forma responsável.'
+        },
+        {
+          name: 'Selo Verde Brasil',
+          description: 'Produto Sustentável Nacional',
+          icon: 'fas fa-check-circle',
+          details: 'Reconhecimento nacional pela excelência em práticas sustentáveis.'
+        }
+      ];
+
+      const achievements = [
+        {
+          year: '2024',
+          title: 'Prêmio Indústria Sustentável',
+          organization: 'FIESP',
+          description: 'Reconhecimento pela inovação em filtração sustentável'
+        },
+        {
+          year: '2023',
+          title: 'Certificado Carbono Neutro',
+          organization: 'Green Initiative Brasil',
+          description: 'Neutralização de 100% das emissões de carbono'
+        },
+        {
+          year: '2022',
+          title: 'Selo Empresa B',
+          organization: 'Sistema B Brasil',
+          description: 'Empresa que gera impacto positivo na sociedade e meio ambiente'
+        },
+        {
+          year: '2021',
+          title: 'Top 10 Cleantech Brasil',
+          organization: 'Cleantech Group',
+          description: 'Entre as 10 empresas mais inovadoras em tecnologia limpa'
+        }
+      ];
+
+      return h('section', { className: 'py-16 bg-gray-50' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', {
+              className: 'text-3xl font-bold mb-4',
+              style: { color: colors.primary }
+            }, 'Certificações e Reconhecimentos'),
+            h('p', { className: 'text-lg text-gray-600 max-w-3xl mx-auto' },
+              'Nosso compromisso com a qualidade e sustentabilidade é validado por ',
+              'certificações internacionais e reconhecimentos do setor.'
+            )
+          ),
+
+          // Main Certifications
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-8 mb-16' },
+            certifications.map((cert, index) =>
+              h('div', {
+                key: index,
+                className: 'bg-white rounded-lg p-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300'
+              },
+                h('div', {
+                  className: 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center',
+                  style: { backgroundColor: `${colors.accent}15` }
+                },
+                  h('i', {
+                    className: `${cert.icon} text-6xl`,
+                    style: { color: colors.accent }
+                  })
+                ),
+                
+                h('h3', {
+                  className: 'text-xl font-semibold mb-2',
+                  style: { color: colors.primary }
+                }, cert.name),
+                
+                h('p', { className: 'text-sm font-medium text-gray-500 mb-4' }, cert.description),
+                
+                h('p', { className: 'text-gray-600' }, cert.details)
+              )
+            )
+          ),
+
+          // Timeline of Achievements
+          h('div', { className: 'max-w-4xl mx-auto' },
+            h('h3', {
+              className: 'text-2xl font-semibold text-center mb-8',
+              style: { color: colors.primary }
+            }, 'Linha do Tempo de Conquistas'),
+            
+            h('div', { className: 'relative' },
+              // Timeline line
+              h('div', {
+                className: 'absolute left-8 top-0 bottom-0 w-0.5',
+                style: { backgroundColor: colors.accent }
+              }),
+              
+              achievements.map((achievement, index) =>
+                h('div', { key: index, className: 'relative flex items-start mb-8' },
+                  // Timeline dot
+                  h('div', {
+                    className: 'absolute left-8 w-4 h-4 rounded-full border-4 border-white -translate-x-1/2',
+                    style: { backgroundColor: colors.accent }
+                  }),
+                  
+                  // Year
+                  h('div', { className: 'w-20 text-right mr-8' },
+                    h('span', {
+                      className: 'font-bold',
+                      style: { color: colors.accent }
+                    }, achievement.year)
+                  ),
+                  
+                  // Content
+                  h('div', { className: 'flex-1 bg-white rounded-lg p-6 shadow-sm ml-8' },
+                    h('h4', {
+                      className: 'font-semibold mb-1',
+                      style: { color: colors.primary }
+                    }, achievement.title),
+                    h('p', {
+                      className: 'text-sm font-medium mb-2',
+                      style: { color: colors.secondary }
+                    }, achievement.organization),
+                    h('p', { className: 'text-gray-600 text-sm' }, achievement.description)
+                  )
+                )
+              )
+            )
+          ),
+
+          // Partners Section
+          h('div', { className: 'mt-16 text-center' },
+            h('h3', {
+              className: 'text-2xl font-semibold mb-8',
+              style: { color: colors.primary }
+            }, 'Parceiros em Sustentabilidade'),
+            h('div', { className: 'flex flex-wrap justify-center items-center gap-8' },
+              ['Pacto Global', 'Instituto Ethos', 'CEBDS', 'GBC Brasil'].map(partner =>
+                h('div', {
+                  key: partner,
+                  className: 'bg-white rounded-lg px-8 py-4 shadow-sm'
+                },
+                  h('span', { className: 'font-medium text-gray-700' }, partner)
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Sustainability CTA Component
+    const SustainabilityCTA = () => {
+      return h('section', { className: 'py-16 relative overflow-hidden' },
+        h('div', {
+          className: 'absolute inset-0',
+          style: {
+            background: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.secondary} 100%)`
+          }
+        }),
+        
+        h('div', { className: 'absolute inset-0 opacity-10 pattern-animation' },
+          h('div', {
+            className: 'absolute inset-0',
+            style: {
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M50 30c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20zm0 5c-8.284 0-15 6.716-15 15s6.716 15 15 15 15-6.716 15-15-6.716-15-15-15z'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '100px 100px'
+            }
+          })
+        ),
+
+        h('div', { className: 'relative z-10 container mx-auto px-4' },
+          h('div', { className: 'text-center text-white mb-12' },
+            h('h2', { className: 'text-3xl md:text-4xl font-bold mb-4 font-display' },
+              'Faça Parte da Mudança Verde'
+            ),
+            
+            h('p', { className: 'text-xl mb-8 max-w-3xl mx-auto' },
+              'Junte-se a centenas de empresas que já escolheram a sustentabilidade ',
+              'sem abrir mão da eficiência. Solicite nosso relatório completo de ',
+              'impacto ambiental e descubra como podemos ajudar sua empresa.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto' },
+            // Download Report
+            h('div', { className: 'bg-white/95 backdrop-blur-sm rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300' },
+              h('i', {
+                className: 'fas fa-file-alt text-5xl mb-4',
+                style: { color: colors.accent }
+              }),
+              h('h3', {
+                className: 'font-semibold mb-2',
+                style: { color: colors.primary }
+              }, 'Relatório de Sustentabilidade'),
+              h('p', { className: 'text-sm text-gray-600 mb-4' },
+                'Baixe nosso relatório completo com todas as métricas e certificações'
+              ),
+              h('button', {
+                className: 'inline-flex items-center px-4 py-2 rounded-md font-medium transition duration-150 ease-in-out text-white',
+                style: { backgroundColor: colors.accent }
+              },
+                h('i', { className: 'fas fa-download mr-2' }),
+                'Download PDF'
+              )
+            ),
+
+            // Calculate Impact
+            h('div', { className: 'bg-white/95 backdrop-blur-sm rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300' },
+              h('div', {
+                className: 'w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl',
+                style: { backgroundColor: `${colors.secondary}20` }
+              }, '🌱'),
+              h('h3', {
+                className: 'font-semibold mb-2',
+                style: { color: colors.primary }
+              }, 'Calculadora de Impacto'),
+              h('p', { className: 'text-sm text-gray-600 mb-4' },
+                'Calcule a redução de emissões ao migrar para filtros TMF'
+              ),
+              h('button', {
+                className: 'inline-flex items-center px-4 py-2 rounded-md font-medium border-2 transition duration-150 ease-in-out',
+                style: {
+                  borderColor: colors.secondary,
+                  color: colors.secondary
+                }
+              }, 'Calcular Agora')
+            ),
+
+            // Contact Expert
+            h('div', { className: 'bg-white/95 backdrop-blur-sm rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300' },
+              h('i', {
+                className: 'fas fa-phone text-5xl mb-4',
+                style: { color: colors.primary }
+              }),
+              h('h3', {
+                className: 'font-semibold mb-2',
+                style: { color: colors.primary }
+              }, 'Fale com um Especialista'),
+              h('p', { className: 'text-sm text-gray-600 mb-4' },
+                'Tire suas dúvidas sobre sustentabilidade e certificações'
+              ),
+              h('a', {
+                href: '/contato',
+                className: 'inline-flex items-center px-4 py-2 rounded-md font-medium transition duration-150 ease-in-out text-white',
+                style: { backgroundColor: colors.primary }
+              }, 'Agendar Conversa')
+            )
+          ),
+
+          // Environmental Commitment Statement
+          h('div', { className: 'mt-12 bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-3xl mx-auto border border-white/20' },
+            h('blockquote', { className: 'text-center' },
+              h('p', { className: 'text-lg italic text-white mb-4' },
+                '"Cada filtro TMF instalado representa uma escolha consciente pelo futuro. ',
+                'Juntos, já evitamos a emissão de mais de 10.000 toneladas de CO₂ e ',
+                'economizamos milhões de litros de água."'
+              ),
+              h('footer', { className: 'text-white/80' },
+                h('strong', null, 'João Silva'), h('br'),
+                h('span', { className: 'text-sm' }, 'CEO, TMF Fibers')
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Footer Component (reused)
+    const Footer = () => {
+      return h('footer', { className: 'bg-neutral-900 text-white pt-12 pb-6' },
+        h('div', { className: 'container mx-auto px-4' },
+          // Main footer content
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8' },
+            // Company info
+            h('div', null,
+              h('div', { className: 'flex items-center mb-4' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'block text-xs text-accent-400' }, 'We Are Green')
+                )
+              ),
+              h('p', { className: 'text-sm text-gray-400 mb-4' },
+                'Soluções avançadas em filtração industrial com compromisso ambiental e tecnologia 100% brasileira.'
+              ),
+              // Social media links
+              h('div', { className: 'flex space-x-4' },
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-facebook-f' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-linkedin-in' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-instagram' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-youtube' })
+                )
+              )
+            ),
+            
+            // Products column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Produtos'),
+              h('ul', { className: 'space-y-2 text-sm' },
+                ['Filtros de Celulose', 'Filtros Sintéticos', 'Filtros Compostos', 'Elementos Filtrantes', 'Sistemas Integrados'].map(item =>
+                  h('li', { key: item },
+                    h('a', { href: '/produtos', className: 'text-gray-400 hover:text-white transition' }, item)
+                  )
+                )
+              )
+            ),
+            
+            // Contact column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Contato'),
+              h('ul', { className: 'space-y-3 text-sm' },
+                h('li', { className: 'flex items-start' },
+                  h('i', { className: 'fas fa-map-marker-alt mt-1 mr-3 text-secondary-400' }),
+                  h('span', { className: 'text-gray-400' },
+                    'Av. Industrial, 1500', h('br'), 'Ribeirão Pires - SP', h('br'), 'CEP: 09400-000'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-phone mr-3 text-secondary-400' }),
+                  h('a', { href: 'tel:+551155551234', className: 'text-gray-400 hover:text-white transition' },
+                    '(11) 5555-1234'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-envelope mr-3 text-secondary-400' }),
+                  h('a', { href: 'mailto:contato@tmffibers.com.br', className: 'text-gray-400 hover:text-white transition' },
+                    'contato@tmffibers.com.br'
+                  )
+                )
+              )
+            )
+          ),
+          
+          // Newsletter section
+          h('div', { className: 'border-t border-gray-800 pt-8 pb-6' },
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center' },
+              h('div', null,
+                h('h4', { className: 'text-lg font-semibold mb-2' }, 'Receba Novidades'),
+                h('p', { className: 'text-sm text-gray-400' },
+                  'Cadastre-se para receber informações sobre produtos e soluções'
+                )
+              ),
+              h('form', { className: 'flex gap-2' },
+                h('input', {
+                  type: 'email',
+                  placeholder: 'Seu e-mail',
+                  className: 'flex-1 px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:border-secondary-400 text-white'
+                }),
+                h('button', {
+                  type: 'submit',
+                  className: 'px-6 py-2 bg-secondary-500 text-white rounded-md hover:bg-secondary-600 transition font-medium'
+                }, 'Inscrever')
+              )
+            )
+          ),
+          
+          // Bottom bar
+          h('div', { className: 'border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400' },
+            h('p', null,
+              '© 2024 TMF Fibers. Todos os direitos reservados.'
+            ),
+            h('div', { className: 'flex space-x-6 mt-4 md:mt-0' },
+              h('a', { href: '/privacidade', className: 'hover:text-white transition' }, 'Política de Privacidade'),
+              h('a', { href: '/termos', className: 'hover:text-white transition' }, 'Termos de Uso'),
+              h('a', { href: '/certificacoes', className: 'hover:text-white transition' }, 'Certificações')
+            )
+          )
+        )
+      );
+    };
+    
+    // Main App Component
+    const SustainabilityPage = () => {
+      return h(Fragment, null,
+        h(Header),
+        h('main', { className: 'flex-grow' },
+          h(SustainabilityHero),
+          h(EnvironmentalMetrics),
+          h(SustainabilityPillars),
+          h(Certifications),
+          h(SustainabilityCTA)
+        ),
+        h(Footer)
+      );
+    };
+    
+    // Render the app
+    ReactDOM.render(h(SustainabilityPage), document.getElementById('root'));
+  </script>
+</body>
+</html>

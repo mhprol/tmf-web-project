@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | TMF Fibers - Fale Conosco</title>
+  <meta name="description" content="Entre em contato com a TMF Fibers. Atendimento especializado, suporte técnico e soluções em filtração industrial. Resposta garantida em até 2 horas.">
+  <meta name="keywords" content="contato TMF Fibers, suporte técnico, vendas filtração industrial, atendimento Brasil">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Contato | TMF Fibers">
+  <meta property="og:description" content="Fale conosco: atendimento especializado em filtração industrial com resposta em até 2 horas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tmffibers.com.br/contato">
+  <meta property="og:image" content="https://tmffibers.com.br/img/contato-og.jpg">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script>
+    // Suppress Tailwind CDN production warning
+    const originalWarn = console.warn;
+    console.warn = function(message) {
+      if (message && message.includes && message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return;
+      }
+      originalWarn.apply(console, arguments);
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Restore console.warn after Tailwind loads
+    setTimeout(() => { console.warn = originalWarn; }, 100);
+    
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e6f1f9',
+              100: '#cce3f3',
+              200: '#99c7e7',
+              300: '#66abdb',
+              400: '#328CC1',
+              500: '#0B3C5D',
+              600: '#0a3553',
+              700: '#082e48',
+              800: '#06273d',
+              900: '#052032',
+            },
+            secondary: {
+              50: '#e9f4fb',
+              100: '#d3e9f7',
+              200: '#a7d3ef',
+              300: '#7abde7',
+              400: '#328CC1',
+              500: '#2a75a7',
+              600: '#225e86',
+              700: '#1a4764',
+              800: '#133043',
+              900: '#0b1821',
+            },
+            accent: {
+              50: '#e7f2e9',
+              100: '#cfe5d3',
+              200: '#9fcba7',
+              300: '#6fb17b',
+              400: '#3f974f',
+              500: '#1D5E2A',
+              600: '#174b22',
+              700: '#123819',
+              800: '#0c2611',
+              900: '#061308',
+            },
+            highlight: {
+              50: '#fdf9e7',
+              100: '#faf3cf',
+              200: '#f5e79f',
+              300: '#f0db6f',
+              400: '#ebcf3f',
+              500: '#D9B310',
+              600: '#ae8f0d',
+              700: '#826b0a',
+              800: '#574806',
+              900: '#2b2403',
+            },
+            neutral: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'sans-serif'],
+            'body': ['Open Sans', 'sans-serif'],
+            'mono': ['Roboto Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  
+  <style>
+    /* Custom styles for dropdowns */
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    /* GHL Platform Overrides */
+    .c-row {
+      padding: 0 !important;
+    }
+    
+    /* Fix for dropdown interaction gap */
+    .dropdown::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+    
+    /* Mobile overrides for GHL */
+    @media (max-width: 768px) {
+      .c-row {
+        margin: 0 !important;
+      }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="font-body text-neutral-800 bg-white">
+  <div id="root"></div>
+  
+  <script>
+    const { createElement: h, useState, useEffect, Fragment } = React;
+    
+    // Design system colors
+    const colors = {
+      primary: "#0B3C5D",
+      secondary: "#328CC1",
+      accent: "#1D5E2A",
+      highlight: "#D9B310",
+      light: "#F5F5F5",
+      dark: "#2A2A2A"
+    };
+    
+    // Header Component (reused from index.html)
+    const Header = () => {
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [searchOpen, setSearchOpen] = useState(false);
+      
+      const navItems = [
+        { name: "Home", url: "/" },
+        { 
+          name: "Produtos", 
+          url: "/produtos",
+          submenu: [
+            { name: "Filtros de Celulose", url: "/produtos#celulose" },
+            { name: "Filtros Sintéticos", url: "/produtos#sinteticos" },
+            { name: "Filtros Compostos", url: "/produtos#compostos" },
+            { name: "Elementos Filtrantes", url: "/produtos#elementos" },
+            { name: "Sistemas Integrados", url: "/produtos#sistemas" }
+          ]
+        },
+        { 
+          name: "Aplicações", 
+          url: "/aplicacoes",
+          submenu: [
+            { name: "Alimentar", url: "/aplicacoes#alimentar" },
+            { name: "Químico", url: "/aplicacoes#quimico" },
+            { name: "Farmacêutico", url: "/aplicacoes#farmaceutico" },
+            { name: "Automotivo", url: "/aplicacoes#automotivo" },
+            { name: "Petrolífero", url: "/aplicacoes#petrolifero" },
+            { name: "Têxtil", url: "/aplicacoes#textil" },
+            { name: "Siderúrgico", url: "/aplicacoes#siderurgico" }
+          ]
+        },
+        { name: "Sustentabilidade", url: "/sustentabilidade" },
+        { name: "Sobre Nós", url: "/sobre" },
+        { name: "Contato", url: "/contato" }
+      ];
+      
+      return h('header', { className: 'sticky top-0 z-50 shadow-md bg-white' },
+        h('div', { className: 'container mx-auto px-4 py-3' },
+          h('div', { className: 'flex justify-between items-center' },
+            // Logo
+            h('div', { className: 'flex-shrink-0' },
+              h('a', { href: '/', className: 'flex items-center' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'hidden md:block text-xs text-accent-500' }, 'We Are Green')
+                )
+              )
+            ),
+            
+            // Desktop Navigation
+            h('nav', { className: 'hidden lg:flex items-center space-x-8' },
+              navItems.map(item => 
+                h('div', { key: item.name, className: 'relative dropdown' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium transition duration-150 ease-in-out'
+                  }, item.name),
+                  
+                  item.submenu && h('div', { 
+                    className: 'dropdown-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'
+                  },
+                    h('div', { className: 'py-1' },
+                      item.submenu.map(subitem =>
+                        h('a', {
+                          key: subitem.name,
+                          href: subitem.url,
+                          className: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            
+            // Right side icons
+            h('div', { className: 'flex items-center' },
+              // Search button
+              h('button', { 
+                onClick: () => setSearchOpen(!searchOpen),
+                className: 'p-2 text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: searchOpen ? 'fas fa-times' : 'fas fa-search' })
+              ),
+              
+              // Contact button
+              h('a', { 
+                href: '/contato',
+                className: 'hidden md:flex items-center ml-4 px-4 py-2 rounded-md font-medium bg-accent-500 text-white hover:bg-accent-600'
+              },
+                h('i', { className: 'fas fa-phone mr-2' }),
+                h('span', null, 'Fale Conosco')
+              ),
+              
+              // Mobile menu button
+              h('button', { 
+                onClick: () => setMobileMenuOpen(!mobileMenuOpen),
+                className: 'ml-4 p-2 lg:hidden text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars' })
+              )
+            )
+          ),
+          
+          // Search box
+          searchOpen && h('div', { className: 'pt-3 pb-2' },
+            h('div', { className: 'relative' },
+              h('input', {
+                type: 'text',
+                placeholder: 'Buscar produtos, aplicações...',
+                className: 'w-full px-4 py-2 border border-primary-500 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-400'
+              }),
+              h('button', { 
+                className: 'absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-gray-900'
+              },
+                h('i', { className: 'fas fa-search' })
+              )
+            )
+          )
+        ),
+        
+        // Mobile menu
+        mobileMenuOpen && h('nav', { className: 'lg:hidden bg-white border-t' },
+          h('div', { className: 'container mx-auto px-4 py-3' },
+            h('ul', { className: 'space-y-3' },
+              navItems.map(item =>
+                h('li', { key: item.name, className: 'py-2' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium block'
+                  }, item.name),
+                  
+                  item.submenu && h('ul', { className: 'pl-4 mt-2 space-y-1 border-l-2 border-gray-200' },
+                    item.submenu.map(subitem =>
+                      h('li', { key: subitem.name },
+                        h('a', {
+                          href: subitem.url,
+                          className: 'text-sm text-gray-600 hover:text-gray-900 block py-1'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Contact Hero Component
+    const ContactHero = () => {
+      return h('section', { className: 'relative h-[300px] md:h-[400px] overflow-hidden' },
+        // Background with gradient overlay
+        h('div', { 
+          className: 'absolute inset-0',
+          style: {
+            backgroundImage: 'linear-gradient(rgba(11, 60, 93, 0.85), rgba(50, 140, 193, 0.85)), url("https://images.unsplash.com/photo-1556760544-74068565f05c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }
+        }),
+        
+        // Content
+        h('div', { className: 'relative container mx-auto px-4 h-full flex flex-col justify-center' },
+          // Breadcrumb
+          h('nav', { className: 'mb-4' },
+            h('ol', { className: 'flex items-center space-x-2 text-white/80' },
+              h('li', null,
+                h('a', { href: '/', className: 'hover:text-white transition' }, 'Home')
+              ),
+              h('li', null,
+                h('i', { className: 'fas fa-chevron-right text-xs' })
+              ),
+              h('li', { className: 'text-white font-medium' }, 'Contato')
+            )
+          ),
+          
+          // Title and subtitle
+          h('h1', { className: 'text-4xl md:text-5xl font-display font-bold text-white mb-4' },
+            'Entre em Contato'
+          ),
+          h('p', { className: 'text-xl text-white/90 max-w-2xl' },
+            'Nossa equipe de especialistas está pronta para desenvolver a solução ideal para suas necessidades de filtração industrial.'
+          )
+        ),
+        
+        // Decorative wave at bottom
+        h('div', { className: 'absolute bottom-0 left-0 right-0' },
+          h('svg', { 
+            xmlns: 'http://www.w3.org/2000/svg',
+            viewBox: '0 0 1200 120',
+            preserveAspectRatio: 'none',
+            className: 'w-full h-12 md:h-16 text-white fill-current'
+          },
+            h('path', { 
+              d: 'M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z'
+            })
+          )
+        )
+      );
+    };
+
+    // ContactForm Component
+    const ContactForm = () => {
+      const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        industry: '',
+        productInterest: '',
+        urgency: 'medium',
+        preferredContact: 'email',
+        message: ''
+      });
+
+      const industries = [
+        { value: 'alimentar', label: 'Indústria Alimentar' },
+        { value: 'quimico', label: 'Indústria Química' },
+        { value: 'farmaceutico', label: 'Indústria Farmacêutica' },
+        { value: 'petroleo', label: 'Petróleo e Gás' },
+        { value: 'mineracao', label: 'Mineração' },
+        { value: 'papel', label: 'Papel e Celulose' },
+        { value: 'textil', label: 'Indústria Têxtil' },
+        { value: 'outros', label: 'Outros' }
+      ];
+
+      const productCategories = [
+        { value: 'filtros-cartucho', label: 'Filtros de Cartucho' },
+        { value: 'filtros-saco', label: 'Filtros de Saco' },
+        { value: 'filtros-plissados', label: 'Filtros Plissados' },
+        { value: 'filtros-liquidos', label: 'Filtração de Líquidos' },
+        { value: 'sistemas-completos', label: 'Sistemas Completos' },
+        { value: 'consultoria', label: 'Consultoria Técnica' }
+      ];
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted:', formData);
+      };
+
+      const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      };
+
+      return h('section', { className: 'py-16 bg-gray-50' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'max-w-4xl mx-auto' },
+            h('div', { className: 'text-center mb-12' },
+              h('h2', { className: 'text-3xl md:text-4xl font-bold text-gray-900 font-display mb-4' },
+                'Solicite sua Proposta'
+              ),
+              h('p', { className: 'text-xl text-gray-600 max-w-3xl mx-auto' },
+                'Preencha o formulário abaixo e nossa equipe entrará em contato para desenvolver a solução ideal para sua empresa.'
+              )
+            ),
+
+            h('div', { className: 'bg-white rounded-2xl shadow-xl p-8 md:p-12' },
+              h('form', { onSubmit: handleSubmit, className: 'space-y-8' },
+                // Contact Information
+                h('div', null,
+                  h('h3', { className: 'text-xl font-semibold text-gray-900 mb-6 flex items-center' },
+                    h('i', { className: 'fas fa-user text-blue-600 mr-3' }),
+                    'Informações de Contato'
+                  ),
+                  h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
+                    h('div', null,
+                      h('label', { htmlFor: 'name', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Nome Completo *'
+                      ),
+                      h('input', {
+                        type: 'text',
+                        id: 'name',
+                        name: 'name',
+                        required: true,
+                        value: formData.name,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors',
+                        placeholder: 'Seu nome completo'
+                      })
+                    ),
+                    h('div', null,
+                      h('label', { htmlFor: 'email', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'E-mail *'
+                      ),
+                      h('input', {
+                        type: 'email',
+                        id: 'email',
+                        name: 'email',
+                        required: true,
+                        value: formData.email,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors',
+                        placeholder: 'seu@email.com'
+                      })
+                    ),
+                    h('div', null,
+                      h('label', { htmlFor: 'phone', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Telefone *'
+                      ),
+                      h('input', {
+                        type: 'tel',
+                        id: 'phone',
+                        name: 'phone',
+                        required: true,
+                        value: formData.phone,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors',
+                        placeholder: '(11) 99999-9999'
+                      })
+                    ),
+                    h('div', null,
+                      h('label', { htmlFor: 'company', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Empresa *'
+                      ),
+                      h('input', {
+                        type: 'text',
+                        id: 'company',
+                        name: 'company',
+                        required: true,
+                        value: formData.company,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors',
+                        placeholder: 'Nome da sua empresa'
+                      })
+                    )
+                  )
+                ),
+
+                // Project Information
+                h('div', null,
+                  h('h3', { className: 'text-xl font-semibold text-gray-900 mb-6 flex items-center' },
+                    h('i', { className: 'fas fa-industry text-blue-600 mr-3' }),
+                    'Informações do Projeto'
+                  ),
+                  h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
+                    h('div', null,
+                      h('label', { htmlFor: 'industry', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Segmento Industrial *'
+                      ),
+                      h('select', {
+                        id: 'industry',
+                        name: 'industry',
+                        required: true,
+                        value: formData.industry,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors'
+                      },
+                        h('option', { value: '' }, 'Selecione seu segmento'),
+                        industries.map(industry =>
+                          h('option', { key: industry.value, value: industry.value },
+                            industry.label
+                          )
+                        )
+                      )
+                    ),
+                    h('div', null,
+                      h('label', { htmlFor: 'productInterest', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Interesse em Produto'
+                      ),
+                      h('select', {
+                        id: 'productInterest',
+                        name: 'productInterest',
+                        value: formData.productInterest,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors'
+                      },
+                        h('option', { value: '' }, 'Selecione uma categoria'),
+                        productCategories.map(category =>
+                          h('option', { key: category.value, value: category.value },
+                            category.label
+                          )
+                        )
+                      )
+                    ),
+                    h('div', null,
+                      h('label', { htmlFor: 'urgency', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Urgência do Projeto'
+                      ),
+                      h('select', {
+                        id: 'urgency',
+                        name: 'urgency',
+                        value: formData.urgency,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors'
+                      },
+                        h('option', { value: 'low' }, 'Baixa (mais de 3 meses)'),
+                        h('option', { value: 'medium' }, 'Média (1-3 meses)'),
+                        h('option', { value: 'high' }, 'Alta (menos de 1 mês)'),
+                        h('option', { value: 'urgent' }, 'Urgente (imediato)')
+                      )
+                    ),
+                    h('div', null,
+                      h('label', { htmlFor: 'preferredContact', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                        'Forma Preferida de Contato'
+                      ),
+                      h('select', {
+                        id: 'preferredContact',
+                        name: 'preferredContact',
+                        value: formData.preferredContact,
+                        onChange: handleChange,
+                        className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors'
+                      },
+                        h('option', { value: 'email' }, 'E-mail'),
+                        h('option', { value: 'phone' }, 'Telefone'),
+                        h('option', { value: 'whatsapp' }, 'WhatsApp'),
+                        h('option', { value: 'presencial' }, 'Reunião Presencial')
+                      )
+                    )
+                  )
+                ),
+
+                // Message
+                h('div', null,
+                  h('label', { htmlFor: 'message', className: 'block text-sm font-medium text-gray-700 mb-2' },
+                    'Detalhes do Projeto *'
+                  ),
+                  h('textarea', {
+                    id: 'message',
+                    name: 'message',
+                    required: true,
+                    rows: 6,
+                    value: formData.message,
+                    onChange: handleChange,
+                    className: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors resize-vertical',
+                    placeholder: 'Descreva suas necessidades de filtração, especificações técnicas, volume de produção, ou qualquer informação relevante para desenvolvermos a melhor solução...'
+                  })
+                ),
+
+                // Submit Button
+                h('div', { className: 'text-center' },
+                  h('button', {
+                    type: 'submit',
+                    className: 'bg-gradient-to-r from-blue-600 to-blue-700 text-white px-12 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl'
+                  },
+                    h('i', { className: 'fas fa-paper-plane mr-2' }),
+                    'Enviar Solicitação'
+                  ),
+                  h('p', { className: 'text-sm text-gray-500 mt-4' },
+                    '* Campos obrigatórios. Retornaremos em até 2 horas úteis.'
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // ContactInfo Component
+    const ContactInfo = () => {
+      const contactMethods = [
+        {
+          title: 'Telefone Comercial',
+          icon: 'fas fa-phone',
+          value: '(11) 3456-7890',
+          subtitle: 'Segunda a Sexta, 8h às 18h',
+          link: 'tel:+551134567890',
+          color: 'blue'
+        },
+        {
+          title: 'WhatsApp Business',
+          icon: 'fab fa-whatsapp',
+          value: '(11) 99876-5432',
+          subtitle: 'Atendimento rápido',
+          link: 'https://wa.me/5511998765432',
+          color: 'green'
+        },
+        {
+          title: 'E-mail Comercial',
+          icon: 'fas fa-envelope',
+          value: 'vendas@tmffibers.com.br',
+          subtitle: 'Resposta em até 2 horas',
+          link: 'mailto:vendas@tmffibers.com.br',
+          color: 'blue'
+        },
+        {
+          title: 'Suporte Técnico',
+          icon: 'fas fa-tools',
+          value: 'suporte@tmffibers.com.br',
+          subtitle: 'Assistência especializada',
+          link: 'mailto:suporte@tmffibers.com.br',
+          color: 'orange'
+        }
+      ];
+
+      const businessInfo = [
+        {
+          title: 'Horário de Atendimento',
+          icon: 'fas fa-clock',
+          lines: [
+            'Segunda a Sexta: 8h às 18h',
+            'Sábado: 8h às 12h',
+            'Domingo: Fechado'
+          ]
+        },
+        {
+          title: 'Tempo de Resposta',
+          icon: 'fas fa-stopwatch',
+          lines: [
+            'E-mail: até 2 horas úteis',
+            'WhatsApp: até 30 minutos',
+            'Telefone: imediato'
+          ]
+        },
+        {
+          title: 'Idiomas Atendidos',
+          icon: 'fas fa-globe',
+          lines: [
+            'Português (nativo)',
+            'Inglês (fluente)',
+            'Espanhol (básico)'
+          ]
+        }
+      ];
+
+      const getColorClasses = (color) => {
+        const colors = {
+          blue: 'group-hover:bg-blue-600 group-hover:text-white bg-blue-100 text-blue-600',
+          green: 'group-hover:bg-green-600 group-hover:text-white bg-green-100 text-green-600',
+          orange: 'group-hover:bg-orange-600 group-hover:text-white bg-orange-100 text-orange-600'
+        };
+        return colors[color] || colors.blue;
+      };
+
+      return h('section', { className: 'py-16 bg-white' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', { className: 'text-3xl md:text-4xl font-bold text-gray-900 font-display mb-4' },
+              'Canais de Atendimento'
+            ),
+            h('p', { className: 'text-xl text-gray-600 max-w-3xl mx-auto' },
+              'Escolha o canal que preferir. Nossa equipe está preparada para atendê-lo com a excelência que você merece.'
+            )
+          ),
+
+          // Contact Methods
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16' },
+            contactMethods.map((method, index) =>
+              h('a', {
+                key: index,
+                href: method.link,
+                className: 'group bg-gray-50 rounded-xl p-6 text-center hover:bg-blue-50 transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1'
+              },
+                h('div', { className: `w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center transition-colors ${getColorClasses(method.color)}` },
+                  h('i', { className: `${method.icon} text-2xl` })
+                ),
+                h('h3', { className: 'font-semibold text-gray-900 mb-2' }, method.title),
+                h('div', { className: 'text-lg font-medium text-gray-800 mb-1' }, method.value),
+                h('div', { className: 'text-sm text-gray-600' }, method.subtitle)
+              )
+            )
+          ),
+
+          // Business Information
+          h('div', { className: 'bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 md:p-12' },
+            h('h3', { className: 'text-2xl font-bold text-center text-gray-900 mb-8' },
+              'Informações de Atendimento'
+            ),
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-8' },
+              businessInfo.map((info, index) =>
+                h('div', { key: index, className: 'text-center' },
+                  h('div', { className: 'w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4' },
+                    h('i', { className: `${info.icon} text-white text-xl` })
+                  ),
+                  h('h4', { className: 'font-semibold text-gray-900 mb-3' }, info.title),
+                  h('div', { className: 'space-y-1' },
+                    info.lines.map((line, lineIndex) =>
+                      h('div', { key: lineIndex, className: 'text-gray-700 text-sm' }, line)
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+          // Emergency Contact
+          h('div', { className: 'mt-12 text-center' },
+            h('div', { className: 'bg-red-50 border border-red-200 rounded-xl p-6 max-w-2xl mx-auto' },
+              h('div', { className: 'flex items-center justify-center mb-3' },
+                h('i', { className: 'fas fa-exclamation-triangle text-red-600 text-2xl mr-3' }),
+                h('h4', { className: 'text-xl font-semibold text-red-800' }, 'Emergência 24h')
+              ),
+              h('p', { className: 'text-red-700 mb-3' },
+                'Para situações de emergência em equipamentos em operação:'
+              ),
+              h('a', { 
+                href: 'tel:+5511987654321',
+                className: 'inline-flex items-center bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors'
+              },
+                h('i', { className: 'fas fa-phone mr-2' }),
+                '(11) 98765-4321'
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // SupportChannels Component
+    const SupportChannels = () => {
+      const departments = [
+        {
+          title: 'Vendas e Orçamentos',
+          icon: 'fas fa-handshake',
+          description: 'Consultoria comercial, cotações e propostas técnicas personalizadas',
+          email: 'vendas@tmffibers.com.br',
+          phone: '(11) 3456-7890',
+          whatsapp: '5511987654321',
+          color: 'blue',
+          services: [
+            'Cotações e propostas',
+            'Consultoria de produtos',
+            'Análise de aplicações',
+            'Projetos especiais'
+          ]
+        },
+        {
+          title: 'Suporte Técnico',
+          icon: 'fas fa-tools',
+          description: 'Assistência técnica especializada, instalação e manutenção preventiva',
+          email: 'suporte@tmffibers.com.br',
+          phone: '(11) 3456-7891',
+          whatsapp: '5511987654322',
+          color: 'orange',
+          services: [
+            'Assistência técnica',
+            'Instalação de equipamentos',
+            'Manutenção preventiva',
+            'Treinamento operacional'
+          ]
+        },
+        {
+          title: 'Engenharia e P&D',
+          icon: 'fas fa-drafting-compass',
+          description: 'Desenvolvimento de soluções customizadas e projetos de engenharia',
+          email: 'engenharia@tmffibers.com.br',
+          phone: '(11) 3456-7892',
+          whatsapp: '5511987654323',
+          color: 'green',
+          services: [
+            'Projetos customizados',
+            'Análise de viabilidade',
+            'Estudos de caso',
+            'Inovação e desenvolvimento'
+          ]
+        },
+        {
+          title: 'Qualidade e Certificações',
+          icon: 'fas fa-certificate',
+          description: 'Controle de qualidade, certificações e conformidade regulatória',
+          email: 'qualidade@tmffibers.com.br',
+          phone: '(11) 3456-7893',
+          whatsapp: '5511987654324',
+          color: 'purple',
+          services: [
+            'Laudos técnicos',
+            'Certificações',
+            'Controle de qualidade',
+            'Conformidade regulatória'
+          ]
+        },
+        {
+          title: 'Logística e Entrega',
+          icon: 'fas fa-shipping-fast',
+          description: 'Acompanhamento de pedidos, entregas e logística especializada',
+          email: 'logistica@tmffibers.com.br',
+          phone: '(11) 3456-7894',
+          whatsapp: '5511987654325',
+          color: 'indigo',
+          services: [
+            'Rastreamento de pedidos',
+            'Logística expressa',
+            'Entregas programadas',
+            'Estoque consignado'
+          ]
+        },
+        {
+          title: 'Pós-Vendas',
+          icon: 'fas fa-user-shield',
+          description: 'Garantia, assistência contínua e relacionamento com o cliente',
+          email: 'pos-vendas@tmffibers.com.br',
+          phone: '(11) 3456-7895',
+          whatsapp: '5511987654326',
+          color: 'red',
+          services: [
+            'Garantia de produtos',
+            'Assistência contínua',
+            'Feedback e melhorias',
+            'Programas de fidelidade'
+          ]
+        }
+      ];
+
+      const getColorClasses = (color) => {
+        const colors = {
+          blue: 'bg-blue-50 border-blue-200 text-blue-800',
+          orange: 'bg-orange-50 border-orange-200 text-orange-800',
+          green: 'bg-green-50 border-green-200 text-green-800',
+          purple: 'bg-purple-50 border-purple-200 text-purple-800',
+          indigo: 'bg-indigo-50 border-indigo-200 text-indigo-800',
+          red: 'bg-red-50 border-red-200 text-red-800'
+        };
+        return colors[color] || colors.blue;
+      };
+
+      const getIconColorClasses = (color) => {
+        const colors = {
+          blue: 'bg-blue-600 text-white',
+          orange: 'bg-orange-600 text-white',
+          green: 'bg-green-600 text-white',
+          purple: 'bg-purple-600 text-white',
+          indigo: 'bg-indigo-600 text-white',
+          red: 'bg-red-600 text-white'
+        };
+        return colors[color] || colors.blue;
+      };
+
+      return h('section', { className: 'py-16 bg-white' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', { className: 'text-3xl md:text-4xl font-bold text-gray-900 font-display mb-4' },
+              'Departamentos Especializados'
+            ),
+            h('p', { className: 'text-xl text-gray-600 max-w-3xl mx-auto' },
+              'Nossa equipe está organizada para oferecer atendimento especializado em cada área. Fale diretamente com o departamento que pode ajudá-lo.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' },
+            departments.map((dept, index) =>
+              h('div', {
+                key: index,
+                className: 'bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-gray-200 transform hover:-translate-y-1'
+              },
+                // Header
+                h('div', { className: `p-6 ${getColorClasses(dept.color)} border-b` },
+                  h('div', { className: 'flex items-center mb-3' },
+                    h('div', { className: `w-12 h-12 rounded-full flex items-center justify-center mr-4 ${getIconColorClasses(dept.color)}` },
+                      h('i', { className: `${dept.icon} text-xl` })
+                    ),
+                    h('h3', { className: 'text-xl font-bold' }, dept.title)
+                  ),
+                  h('p', { className: 'text-sm opacity-80' }, dept.description)
+                ),
+
+                // Contact Methods
+                h('div', { className: 'p-6' },
+                  h('div', { className: 'space-y-3 mb-4' },
+                    h('a', {
+                      href: `mailto:${dept.email}`,
+                      className: 'flex items-center text-sm text-gray-700 hover:text-blue-600 transition-colors'
+                    },
+                      h('i', { className: 'fas fa-envelope w-5 mr-3 text-gray-500' }),
+                      dept.email
+                    ),
+                    h('a', {
+                      href: `tel:${dept.phone.replace(/\D/g, '')}`,
+                      className: 'flex items-center text-sm text-gray-700 hover:text-blue-600 transition-colors'
+                    },
+                      h('i', { className: 'fas fa-phone w-5 mr-3 text-gray-500' }),
+                      dept.phone
+                    ),
+                    h('a', {
+                      href: `https://wa.me/${dept.whatsapp}`,
+                      className: 'flex items-center text-sm text-gray-700 hover:text-green-600 transition-colors'
+                    },
+                      h('i', { className: 'fab fa-whatsapp w-5 mr-3 text-gray-500' }),
+                      'WhatsApp'
+                    )
+                  ),
+
+                  // Services
+                  h('div', null,
+                    h('h4', { className: 'font-semibold text-gray-900 mb-3 text-sm' }, 'Serviços:'),
+                    h('div', { className: 'space-y-2' },
+                      dept.services.map((service, serviceIndex) =>
+                        h('div', { key: serviceIndex, className: 'flex items-center text-sm text-gray-600' },
+                          h('i', { className: 'fas fa-check-circle text-green-500 mr-2 text-xs' }),
+                          service
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+          // Quick Contact CTA
+          h('div', { className: 'mt-16 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-white text-center' },
+            h('h3', { className: 'text-2xl md:text-3xl font-bold mb-4' },
+              'Não sabe qual departamento procurar?'
+            ),
+            h('p', { className: 'text-xl text-gray-300 mb-6 max-w-2xl mx-auto' },
+              'Entre em contato com nossa central de atendimento. Direcionaremos você para o especialista certo.'
+            ),
+            h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
+              h('a', {
+                href: 'tel:+551134567890',
+                className: 'bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center'
+              },
+                h('i', { className: 'fas fa-phone mr-2' }),
+                '(11) 3456-7890'
+              ),
+              h('a', {
+                href: 'https://wa.me/5511987654321',
+                className: 'bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center'
+              },
+                h('i', { className: 'fab fa-whatsapp mr-2' }),
+                'WhatsApp'
+              ),
+              h('a', {
+                href: 'mailto:contato@tmffibers.com.br',
+                className: 'bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center'
+              },
+                h('i', { className: 'fas fa-envelope mr-2' }),
+                'E-mail Geral'
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Locations Component
+    const Locations = () => {
+      const locations = [
+        {
+          type: 'Matriz',
+          city: 'São Paulo',
+          state: 'SP',
+          address: 'Av. Paulista, 1842 - Conj. 142',
+          neighborhood: 'Bela Vista',
+          zipCode: '01310-923',
+          phone: '(11) 3456-7890',
+          email: 'matriz@tmffibers.com.br',
+          manager: 'Carlos Silva',
+          services: ['Vendas', 'Engenharia', 'Suporte Técnico', 'Administração'],
+          isHeadquarters: true
+        },
+        {
+          type: 'Filial',
+          city: 'Rio de Janeiro',
+          state: 'RJ',
+          address: 'Rua do Ouvidor, 98 - Sala 304',
+          neighborhood: 'Centro',
+          zipCode: '20040-030',
+          phone: '(21) 3234-5678',
+          email: 'rio@tmffibers.com.br',
+          manager: 'Ana Costa',
+          services: ['Vendas', 'Suporte Técnico']
+        },
+        {
+          type: 'Filial',
+          city: 'Belo Horizonte',
+          state: 'MG',
+          address: 'Av. Afonso Pena, 867 - 8º andar',
+          neighborhood: 'Centro',
+          zipCode: '30130-002',
+          phone: '(31) 3345-6789',
+          email: 'bh@tmffibers.com.br',
+          manager: 'Roberto Santos',
+          services: ['Vendas', 'Distribuidora Regional']
+        },
+        {
+          type: 'Representação',
+          city: 'Porto Alegre',
+          state: 'RS',
+          address: 'Rua dos Andradas, 1234 - Conj. 56',
+          neighborhood: 'Centro Histórico',
+          zipCode: '90020-015',
+          phone: '(51) 3456-7890',
+          email: 'rs@tmffibers.com.br',
+          manager: 'Fernanda Lima',
+          services: ['Vendas', 'Distribuição']
+        }
+      ];
+
+      return h('section', { className: 'py-16 bg-gray-50' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'text-center mb-12' },
+            h('h2', { className: 'text-3xl md:text-4xl font-bold text-gray-900 font-display mb-4' },
+              'Nossas Localizações'
+            ),
+            h('p', { className: 'text-xl text-gray-600 max-w-3xl mx-auto' },
+              'Presença nacional com escritórios estrategicamente posicionados para atender todo o território brasileiro.'
+            )
+          ),
+
+          h('div', { className: 'grid grid-cols-1 lg:grid-cols-2 gap-8' },
+            // Map Placeholder
+            h('div', { className: 'order-2 lg:order-1' },
+              h('div', { className: 'bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl h-96 lg:h-full flex items-center justify-center relative overflow-hidden' },
+                h('div', { className: 'absolute inset-0 bg-blue-600/10' }),
+                h('div', { className: 'relative text-center text-blue-800' },
+                  h('i', { className: 'fas fa-map-marked-alt text-6xl mb-4' }),
+                  h('h3', { className: 'text-2xl font-bold mb-2' }, 'Cobertura Nacional'),
+                  h('p', { className: 'text-lg' }, '4 escritórios estratégicos'),
+                  h('p', { className: 'text-sm opacity-75' }, 'Atendimento personalizado em sua região')
+                ),
+                
+                // Decorative elements
+                h('div', { className: 'absolute top-4 left-4 w-3 h-3 bg-red-500 rounded-full animate-pulse' }),
+                h('div', { className: 'absolute top-12 right-8 w-3 h-3 bg-red-500 rounded-full animate-pulse' }),
+                h('div', { className: 'absolute bottom-16 left-12 w-3 h-3 bg-red-500 rounded-full animate-pulse' }),
+                h('div', { className: 'absolute bottom-8 right-4 w-3 h-3 bg-red-500 rounded-full animate-pulse' })
+              )
+            ),
+
+            // Locations List
+            h('div', { className: 'order-1 lg:order-2 space-y-6' },
+              locations.map((location, index) =>
+                h('div', {
+                  key: index,
+                  className: `bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow ${location.isHeadquarters ? 'border-2 border-blue-200' : ''}`
+                },
+                  h('div', { className: 'flex items-start justify-between mb-4' },
+                    h('div', null,
+                      h('div', { className: 'flex items-center mb-2' },
+                        h('h3', { className: 'text-xl font-bold text-gray-900' },
+                          `${location.city}, ${location.state}`
+                        ),
+                        location.isHeadquarters && h('span', { className: 'ml-3 bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded' },
+                          'MATRIZ'
+                        )
+                      ),
+                      h('div', { className: 'text-sm text-gray-600 font-medium' }, location.type)
+                    ),
+                    h('i', { className: 'fas fa-building text-2xl text-blue-600' })
+                  ),
+
+                  h('div', { className: 'space-y-3' },
+                    h('div', { className: 'flex items-start' },
+                      h('i', { className: 'fas fa-map-marker-alt text-gray-500 mt-1 mr-3 w-4' }),
+                      h('div', { className: 'text-sm text-gray-700' },
+                        h('div', null, location.address),
+                        h('div', null, `${location.neighborhood} - ${location.city}/${location.state}`),
+                        h('div', null, `CEP: ${location.zipCode}`)
+                      )
+                    ),
+
+                    h('div', { className: 'grid grid-cols-1 sm:grid-cols-2 gap-3' },
+                      h('div', { className: 'flex items-center' },
+                        h('i', { className: 'fas fa-phone text-gray-500 mr-3 w-4' }),
+                        h('a', {
+                          href: `tel:${location.phone.replace(/\D/g, '')}`,
+                          className: 'text-sm text-blue-600 hover:text-blue-800'
+                        }, location.phone)
+                      ),
+                      h('div', { className: 'flex items-center' },
+                        h('i', { className: 'fas fa-envelope text-gray-500 mr-3 w-4' }),
+                        h('a', {
+                          href: `mailto:${location.email}`,
+                          className: 'text-sm text-blue-600 hover:text-blue-800'
+                        }, location.email)
+                      )
+                    ),
+
+                    h('div', { className: 'flex items-center' },
+                      h('i', { className: 'fas fa-user-tie text-gray-500 mr-3 w-4' }),
+                      h('span', { className: 'text-sm text-gray-700' },
+                        'Gerente: ',
+                        h('span', { className: 'font-medium' }, location.manager)
+                      )
+                    ),
+
+                    h('div', null,
+                      h('div', { className: 'text-sm font-medium text-gray-900 mb-2' }, 'Serviços:'),
+                      h('div', { className: 'flex flex-wrap gap-2' },
+                        location.services.map((service, serviceIndex) =>
+                          h('span', {
+                            key: serviceIndex,
+                            className: 'bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded font-medium'
+                          }, service)
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+          // Coverage Information
+          h('div', { className: 'mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center' },
+            h('h3', { className: 'text-2xl font-bold mb-4' }, 'Cobertura Nacional'),
+            h('p', { className: 'text-lg mb-6 max-w-3xl mx-auto' },
+              'Mesmo sem escritório em sua região, atendemos todo o Brasil através de nossa rede de representantes e parceiros qualificados.'
+            ),
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6' },
+              h('div', null,
+                h('div', { className: 'text-3xl font-bold' }, '100%'),
+                h('div', { className: 'text-blue-100' }, 'Território Nacional')
+              ),
+              h('div', null,
+                h('div', { className: 'text-3xl font-bold' }, '48h'),
+                h('div', { className: 'text-blue-100' }, 'Tempo de Resposta')
+              ),
+              h('div', null,
+                h('div', { className: 'text-3xl font-bold' }, '20+'),
+                h('div', { className: 'text-blue-100' }, 'Anos de Experiência')
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Footer Component (reused from index.html)
+    const Footer = () => {
+      return h('footer', { className: 'bg-neutral-900 text-white pt-12 pb-6' },
+        h('div', { className: 'container mx-auto px-4' },
+          // Main footer content
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8' },
+            // Company info
+            h('div', null,
+              h('div', { className: 'flex items-center mb-4' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'block text-xs text-accent-400' }, 'We Are Green')
+                )
+              ),
+              h('p', { className: 'text-sm text-gray-400 mb-4' },
+                'Soluções avançadas em filtração industrial com compromisso ambiental e tecnologia 100% brasileira.'
+              ),
+              // Social media links
+              h('div', { className: 'flex space-x-4' },
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-facebook-f' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-linkedin-in' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-instagram' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-youtube' })
+                )
+              )
+            ),
+            
+            // Products column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Produtos'),
+              h('ul', { className: 'space-y-2 text-sm' },
+                ['Filtros de Celulose', 'Filtros Sintéticos', 'Filtros Compostos', 'Elementos Filtrantes', 'Sistemas Integrados'].map(item =>
+                  h('li', { key: item },
+                    h('a', { href: '/produtos', className: 'text-gray-400 hover:text-white transition' }, item)
+                  )
+                )
+              )
+            ),
+            
+            // Contact column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Contato'),
+              h('ul', { className: 'space-y-3 text-sm' },
+                h('li', { className: 'flex items-start' },
+                  h('i', { className: 'fas fa-map-marker-alt mt-1 mr-3 text-secondary-400' }),
+                  h('span', { className: 'text-gray-400' },
+                    'Av. Industrial, 1500', h('br'), 'Ribeirão Pires - SP', h('br'), 'CEP: 09400-000'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-phone mr-3 text-secondary-400' }),
+                  h('a', { href: 'tel:+551155551234', className: 'text-gray-400 hover:text-white transition' },
+                    '(11) 5555-1234'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-envelope mr-3 text-secondary-400' }),
+                  h('a', { href: 'mailto:contato@tmffibers.com.br', className: 'text-gray-400 hover:text-white transition' },
+                    'contato@tmffibers.com.br'
+                  )
+                )
+              )
+            )
+          ),
+          
+          // Newsletter section
+          h('div', { className: 'border-t border-gray-800 pt-8 pb-6' },
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center' },
+              h('div', null,
+                h('h4', { className: 'text-lg font-semibold mb-2' }, 'Receba Novidades'),
+                h('p', { className: 'text-sm text-gray-400' },
+                  'Cadastre-se para receber informações sobre produtos e soluções'
+                )
+              ),
+              h('form', { className: 'flex gap-2' },
+                h('input', {
+                  type: 'email',
+                  placeholder: 'Seu e-mail',
+                  className: 'flex-1 px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:border-secondary-400 text-white'
+                }),
+                h('button', {
+                  type: 'submit',
+                  className: 'px-6 py-2 bg-secondary-500 text-white rounded-md hover:bg-secondary-600 transition font-medium'
+                }, 'Inscrever')
+              )
+            )
+          ),
+          
+          // Bottom bar
+          h('div', { className: 'border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400' },
+            h('p', null,
+              '© 2024 TMF Fibers. Todos os direitos reservados.'
+            ),
+            h('div', { className: 'flex space-x-6 mt-4 md:mt-0' },
+              h('a', { href: '/privacidade', className: 'hover:text-white transition' }, 'Política de Privacidade'),
+              h('a', { href: '/termos', className: 'hover:text-white transition' }, 'Termos de Uso'),
+              h('a', { href: '/certificacoes', className: 'hover:text-white transition' }, 'Certificações')
+            )
+          )
+        )
+      );
+    };
+
+    // Main App Component
+    const App = () => {
+      return h('div', { className: 'min-h-screen bg-white' },
+        h(Header),
+        h('main', null,
+          h(ContactHero),
+          h(ContactForm),
+          h(ContactInfo),
+          h(SupportChannels),
+          h(Locations)
+        ),
+        h(Footer)
+      );
+    };
+
+    // Render the app
+    ReactDOM.render(h(App), document.getElementById('root'));
+  </script>
+</body>
+</html>

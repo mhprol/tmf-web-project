@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicações Industriais | TMF Fibers - Soluções de Filtração</title>
+  <meta name="description" content="Soluções especializadas de filtração para cada segmento industrial. Tecnologia brasileira para indústrias alimentícia, química, farmacêutica, automotiva e mais.">
+  <meta name="keywords" content="aplicações industriais, filtração industrial, soluções por segmento, filtros industriais, TMF Fibers">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Aplicações Industriais | TMF Fibers">
+  <meta property="og:description" content="Soluções especializadas de filtração para cada segmento industrial brasileiro.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tmffibers.com.br/aplicacoes">
+  <meta property="og:image" content="https://tmffibers.com.br/img/aplicacoes-og.jpg">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script>
+    // Suppress Tailwind CDN production warning
+    const originalWarn = console.warn;
+    console.warn = function(message) {
+      if (message && message.includes && message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return;
+      }
+      originalWarn.apply(console, arguments);
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Restore console.warn after Tailwind loads
+    setTimeout(() => { console.warn = originalWarn; }, 100);
+    
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e6f1f9',
+              100: '#cce3f3',
+              200: '#99c7e7',
+              300: '#66abdb',
+              400: '#328CC1',
+              500: '#0B3C5D',
+              600: '#0a3553',
+              700: '#082e48',
+              800: '#06273d',
+              900: '#052032',
+            },
+            secondary: {
+              50: '#e9f4fb',
+              100: '#d3e9f7',
+              200: '#a7d3ef',
+              300: '#7abde7',
+              400: '#328CC1',
+              500: '#2a75a7',
+              600: '#225e86',
+              700: '#1a4764',
+              800: '#133043',
+              900: '#0b1821',
+            },
+            accent: {
+              50: '#e7f2e9',
+              100: '#cfe5d3',
+              200: '#9fcba7',
+              300: '#6fb17b',
+              400: '#3f974f',
+              500: '#1D5E2A',
+              600: '#174b22',
+              700: '#123819',
+              800: '#0c2611',
+              900: '#061308',
+            },
+            highlight: {
+              50: '#fdf9e7',
+              100: '#faf3cf',
+              200: '#f5e79f',
+              300: '#f0db6f',
+              400: '#ebcf3f',
+              500: '#D9B310',
+              600: '#ae8f0d',
+              700: '#826b0a',
+              800: '#574806',
+              900: '#2b2403',
+            },
+            neutral: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'sans-serif'],
+            'body': ['Open Sans', 'sans-serif'],
+            'mono': ['Roboto Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  
+  <style>
+    /* Custom styles for dropdowns */
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    /* GHL Platform Overrides */
+    .c-row {
+      padding: 0 !important;
+    }
+    
+    /* Fix for dropdown interaction gap */
+    .dropdown::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+    
+    /* Mobile overrides for GHL */
+    @media (max-width: 768px) {
+      .c-row {
+        margin: 0 !important;
+      }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom animation for CTA pattern */
+    @keyframes pattern-drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(60px, 60px); }
+    }
+    
+    .pattern-animation {
+      animation: pattern-drift 30s linear infinite;
+    }
+  </style>
+</head>
+<body class="font-body text-neutral-800 bg-white">
+  <div id="root"></div>
+  
+  <script>
+    const { createElement: h, useState, useEffect, Fragment } = React;
+    
+    // Design system colors
+    const colors = {
+      primary: "#0B3C5D",
+      secondary: "#328CC1",
+      accent: "#1D5E2A",
+      highlight: "#D9B310",
+      light: "#F5F5F5",
+      dark: "#2A2A2A"
+    };
+    
+    // Header Component (reused from index.html)
+    const Header = () => {
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [searchOpen, setSearchOpen] = useState(false);
+      
+      const navItems = [
+        { name: "Home", url: "/" },
+        { 
+          name: "Produtos", 
+          url: "/produtos",
+          submenu: [
+            { name: "Filtros de Celulose", url: "/produtos#celulose" },
+            { name: "Filtros Sintéticos", url: "/produtos#sinteticos" },
+            { name: "Filtros Compostos", url: "/produtos#compostos" },
+            { name: "Elementos Filtrantes", url: "/produtos#elementos" },
+            { name: "Sistemas Integrados", url: "/produtos#sistemas" }
+          ]
+        },
+        { 
+          name: "Aplicações", 
+          url: "/aplicacoes",
+          submenu: [
+            { name: "Alimentar", url: "/aplicacoes#alimentar" },
+            { name: "Químico", url: "/aplicacoes#quimico" },
+            { name: "Farmacêutico", url: "/aplicacoes#farmaceutico" },
+            { name: "Automotivo", url: "/aplicacoes#automotivo" },
+            { name: "Petrolífero", url: "/aplicacoes#petrolifero" },
+            { name: "Têxtil", url: "/aplicacoes#textil" },
+            { name: "Siderúrgico", url: "/aplicacoes#siderurgico" }
+          ]
+        },
+        { name: "Sustentabilidade", url: "/sustentabilidade" },
+        { name: "Sobre Nós", url: "/sobre" },
+        { name: "Contato", url: "/contato" }
+      ];
+      
+      return h('header', { className: 'sticky top-0 z-50 shadow-md bg-white' },
+        h('div', { className: 'container mx-auto px-4 py-3' },
+          h('div', { className: 'flex justify-between items-center' },
+            // Logo
+            h('div', { className: 'flex-shrink-0' },
+              h('a', { href: '/', className: 'flex items-center' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#1D5E2A',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'hidden md:block text-xs text-accent-500' }, 'We Are Green')
+                )
+              )
+            ),
+            
+            // Desktop Navigation
+            h('nav', { className: 'hidden lg:flex items-center space-x-8' },
+              navItems.map(item => 
+                h('div', { key: item.name, className: 'relative dropdown' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium transition duration-150 ease-in-out'
+                  }, item.name),
+                  
+                  item.submenu && h('div', { 
+                    className: 'dropdown-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'
+                  },
+                    h('div', { className: 'py-1' },
+                      item.submenu.map(subitem =>
+                        h('a', {
+                          key: subitem.name,
+                          href: subitem.url,
+                          className: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            
+            // Right side icons
+            h('div', { className: 'flex items-center' },
+              // Search button
+              h('button', { 
+                onClick: () => setSearchOpen(!searchOpen),
+                className: 'p-2 text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: searchOpen ? 'fas fa-times' : 'fas fa-search' })
+              ),
+              
+              // Contact button
+              h('a', { 
+                href: '/contato',
+                className: 'hidden md:flex items-center ml-4 px-4 py-2 rounded-md font-medium bg-accent-500 text-white hover:bg-accent-600'
+              },
+                h('i', { className: 'fas fa-phone mr-2' }),
+                h('span', null, 'Fale Conosco')
+              ),
+              
+              // Mobile menu button
+              h('button', { 
+                onClick: () => setMobileMenuOpen(!mobileMenuOpen),
+                className: 'ml-4 p-2 lg:hidden text-gray-600 hover:text-gray-900 focus:outline-none'
+              },
+                h('i', { className: mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars' })
+              )
+            )
+          ),
+          
+          // Search box
+          searchOpen && h('div', { className: 'pt-3 pb-2' },
+            h('div', { className: 'relative' },
+              h('input', {
+                type: 'text',
+                placeholder: 'Buscar produtos, aplicações...',
+                className: 'w-full px-4 py-2 border border-primary-500 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-400'
+              }),
+              h('button', { 
+                className: 'absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-gray-900'
+              },
+                h('i', { className: 'fas fa-search' })
+              )
+            )
+          )
+        ),
+        
+        // Mobile menu
+        mobileMenuOpen && h('nav', { className: 'lg:hidden bg-white border-t' },
+          h('div', { className: 'container mx-auto px-4 py-3' },
+            h('ul', { className: 'space-y-3' },
+              navItems.map(item =>
+                h('li', { key: item.name, className: 'py-2' },
+                  h('a', { 
+                    href: item.url,
+                    className: 'text-gray-700 hover:text-gray-900 font-medium block'
+                  }, item.name),
+                  
+                  item.submenu && h('ul', { className: 'pl-4 mt-2 space-y-1 border-l-2 border-gray-200' },
+                    item.submenu.map(subitem =>
+                      h('li', { key: subitem.name },
+                        h('a', {
+                          href: subitem.url,
+                          className: 'text-sm text-gray-600 hover:text-gray-900 block py-1'
+                        }, subitem.name)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Applications Hero Component
+    const ApplicationsHero = () => {
+      return h('section', { className: 'relative h-[300px] md:h-[400px] overflow-hidden' },
+        // Background with gradient overlay
+        h('div', { 
+          className: 'absolute inset-0',
+          style: {
+            backgroundImage: 'linear-gradient(rgba(11, 60, 93, 0.85), rgba(50, 140, 193, 0.85)), url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }
+        }),
+        
+        // Content
+        h('div', { className: 'relative container mx-auto px-4 h-full flex flex-col justify-center' },
+          // Breadcrumb
+          h('nav', { className: 'mb-4' },
+            h('ol', { className: 'flex items-center space-x-2 text-white/80' },
+              h('li', null,
+                h('a', { href: '/', className: 'hover:text-white transition' }, 'Home')
+              ),
+              h('li', null,
+                h('i', { className: 'fas fa-chevron-right text-xs' })
+              ),
+              h('li', { className: 'text-white font-medium' }, 'Aplicações')
+            )
+          ),
+          
+          // Title and subtitle
+          h('h1', { className: 'text-4xl md:text-5xl font-display font-bold text-white mb-4' },
+            'Aplicações Industriais'
+          ),
+          h('p', { className: 'text-xl text-white/90 max-w-2xl' },
+            'Soluções especializadas de filtração para cada segmento industrial, desenvolvidas com tecnologia brasileira e foco em sustentabilidade.'
+          )
+        ),
+        
+        // Decorative wave at bottom
+        h('div', { className: 'absolute bottom-0 left-0 right-0' },
+          h('svg', { 
+            xmlns: 'http://www.w3.org/2000/svg',
+            viewBox: '0 0 1200 120',
+            preserveAspectRatio: 'none',
+            className: 'w-full h-12 md:h-16 text-white fill-current'
+          },
+            h('path', { 
+              d: 'M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z'
+            })
+          )
+        )
+      );
+    };
+    
+    // Industry Detail Component
+    const IndustryDetail = () => {
+      const [selectedIndustry, setSelectedIndustry] = useState('alimentar');
+      
+      const industriesData = {
+        alimentar: {
+          id: "alimentar",
+          name: "Indústria Alimentar",
+          icon: 'fas fa-tint',
+          color: colors.primary,
+          description: "A indústria alimentícia exige os mais altos padrões de qualidade e segurança. Nossas soluções garantem a integridade dos produtos e a conformidade com as normas sanitárias.",
+          applications: [
+            {
+              name: "Filtração de Bebidas",
+              description: "Remoção de partículas e clarificação em sucos, cervejas e refrigerantes",
+              products: ["Filtros de Celulose FC-100", "Elementos Compostos EC-200"]
+            },
+            {
+              name: "Processamento de Óleos",
+              description: "Purificação de óleos vegetais e remoção de impurezas",
+              products: ["Filtros Sintéticos FS-300", "Sistemas Integrados SI-400"]
+            },
+            {
+              name: "Produtos Lácteos",
+              description: "Filtração de leite e derivados com manutenção das propriedades nutricionais",
+              products: ["Filtros Especiais FE-500", "Elementos de Alta Pureza"]
+            }
+          ],
+          benefits: [
+            "Certificação para contato com alimentos",
+            "Resistência a lavagens frequentes",
+            "Manutenção do sabor e nutrientes",
+            "Conformidade com normas ANVISA"
+          ],
+          caseStudy: {
+            title: "Cervejaria Artesanal Reduz Perdas em 40%",
+            description: "Implementação de nossos filtros de celulose especiais resultou em maior clareza do produto final e redução significativa de perdas no processo.",
+            metrics: ["40% menos perdas", "30% maior vida útil", "ROI em 6 meses"]
+          }
+        },
+        quimico: {
+          id: "quimico",
+          name: "Indústria Química",
+          icon: 'fas fa-flask',
+          color: colors.secondary,
+          description: "Processos químicos demandam filtros com alta resistência a produtos corrosivos e temperaturas extremas. Nossa linha oferece soluções robustas e duráveis.",
+          applications: [
+            {
+              name: "Processos Corrosivos",
+              description: "Filtração de ácidos, bases e solventes agressivos",
+              products: ["Filtros Resistentes Químicos FRQ-100", "Elementos PTFE"]
+            },
+            {
+              name: "Alta Temperatura",
+              description: "Operação em processos com temperaturas até 200°C",
+              products: ["Filtros Térmicos FT-200", "Elementos Metálicos EM-300"]
+            },
+            {
+              name: "Catalisadores",
+              description: "Recuperação e purificação de catalisadores valiosos",
+              products: ["Sistemas de Recuperação SR-400", "Filtros de Precisão"]
+            }
+          ],
+          benefits: [
+            "Resistência química superior",
+            "Operação em altas temperaturas",
+            "Longa vida útil em ambientes agressivos",
+            "Compatibilidade com diversos químicos"
+          ],
+          caseStudy: {
+            title: "Planta Petroquímica Aumenta Eficiência em 35%",
+            description: "Substituição de filtros importados por nossa solução nacional resultou em maior eficiência e redução de paradas para manutenção.",
+            metrics: ["35% mais eficiência", "50% menos paradas", "Economia de R$ 200mil/ano"]
+          }
+        },
+        farmaceutico: {
+          id: "farmaceutico",
+          name: "Indústria Farmacêutica",
+          icon: 'fas fa-pills',
+          color: colors.accent,
+          description: "O setor farmacêutico requer máxima precisão e esterilidade. Nossos filtros atendem às rigorosas normas de qualidade e rastreabilidade exigidas.",
+          applications: [
+            {
+              name: "Água Purificada",
+              description: "Produção de água para injetáveis (WFI) e processos críticos",
+              products: ["Filtros Estéreis FE-100", "Membranas de 0.2 micron"]
+            },
+            {
+              name: "Ar Comprimido",
+              description: "Filtração de ar para salas limpas e processos assépticos",
+              products: ["Filtros HEPA Industriais", "Elementos de Retenção Absoluta"]
+            },
+            {
+              name: "Produtos Biotecnológicos",
+              description: "Clarificação e esterilização de produtos biológicos",
+              products: ["Filtros de Fluxo Tangencial", "Sistemas de Ultrafiltração"]
+            }
+          ],
+          benefits: [
+            "Validação completa FDA/ANVISA",
+            "Rastreabilidade total de lotes",
+            "Esterilização por autoclave",
+            "Certificados de qualidade"
+          ],
+          caseStudy: {
+            title: "Laboratório Nacional Obtém Certificação Internacional",
+            description: "Com nossos filtros validados, o cliente conseguiu aprovação FDA para exportação de seus produtos.",
+            metrics: ["100% aprovação em auditorias", "Zero contaminação", "Certificação FDA"]
+          }
+        },
+        automotivo: {
+          id: "automotivo",
+          name: "Indústria Automotiva",
+          icon: 'fas fa-car',
+          color: colors.highlight,
+          description: "A indústria automotiva demanda filtração eficiente para fluidos hidráulicos, óleos e sistemas de pintura, garantindo qualidade e produtividade.",
+          applications: [
+            {
+              name: "Fluidos Hidráulicos",
+              description: "Proteção de sistemas hidráulicos de prensas e robôs",
+              products: ["Filtros Hidráulicos FH-100", "Elementos Beta 1000"]
+            },
+            {
+              name: "Cabines de Pintura",
+              description: "Filtração de ar e overspray em processos de pintura",
+              products: ["Filtros de Cabine Paint-Stop", "Mantas Filtrantes"]
+            },
+            {
+              name: "Óleos de Corte",
+              description: "Reciclagem e purificação de fluidos de usinagem",
+              products: ["Sistemas de Reciclagem SR-200", "Filtros Magnéticos"]
+            }
+          ],
+          benefits: [
+            "Redução de defeitos de pintura",
+            "Maior vida útil de equipamentos",
+            "Economia com fluidos de corte",
+            "Melhoria na qualidade final"
+          ],
+          caseStudy: {
+            title: "Montadora Reduz Custos com Fluidos em 60%",
+            description: "Sistema de filtração e reciclagem permitiu reutilização contínua de fluidos de corte.",
+            metrics: ["60% economia em fluidos", "80% menos descarte", "Payback em 8 meses"]
+          }
+        },
+        petrolifero: {
+          id: "petrolifero",
+          name: "Setor Petrolífero",
+          icon: 'fas fa-gas-pump',
+          color: "#D35400",
+          description: "O setor de óleo e gás exige soluções robustas para ambientes agressivos, com alta confiabilidade e resistência a pressões extremas.",
+          applications: [
+            {
+              name: "Água Produzida",
+              description: "Tratamento de água de produção para reinjeção ou descarte",
+              products: ["Filtros Coalescentes FC-500", "Separadores Água-Óleo"]
+            },
+            {
+              name: "Gás Natural",
+              description: "Remoção de líquidos e partículas em gasodutos",
+              products: ["Filtros de Gás FG-300", "Elementos Coalescentes"]
+            },
+            {
+              name: "Fluidos de Perfuração",
+              description: "Filtração e reciclagem de lamas de perfuração",
+              products: ["Peneiras Vibratórias", "Sistemas de Controle de Sólidos"]
+            }
+          ],
+          benefits: [
+            "Resistência a H2S e CO2",
+            "Operação em alta pressão",
+            "Certificações para áreas classificadas",
+            "Mínima manutenção requerida"
+          ],
+          caseStudy: {
+            title: "Plataforma Offshore Zera Descarte de Água",
+            description: "Nossa solução permitiu 100% de reinjeção da água produzida, eliminando descarte ao mar.",
+            metrics: ["Zero descarte ao mar", "99.9% eficiência", "Conformidade ambiental total"]
+          }
+        },
+        textil: {
+          id: "textil",
+          name: "Indústria Têxtil",
+          icon: 'fas fa-cut',
+          color: "#8E44AD",
+          description: "A indústria têxtil requer soluções especializadas para tratamento de efluentes, recuperação de corantes e processos de acabamento.",
+          applications: [
+            {
+              name: "Efluentes Têxteis",
+              description: "Remoção de cor e tratamento de águas residuais",
+              products: ["Filtros de Carvão Ativado", "Sistemas de Membranas"]
+            },
+            {
+              name: "Recuperação de Corantes",
+              description: "Economia através da recuperação e reuso de corantes",
+              products: ["Ultrafiltração UF-200", "Nanofiltração NF-300"]
+            },
+            {
+              name: "Água de Processo",
+              description: "Tratamento de água para tingimento e acabamento",
+              products: ["Filtros Multimídia", "Abrandadores"]
+            }
+          ],
+          benefits: [
+            "Redução do consumo de água",
+            "Recuperação de produtos químicos",
+            "Conformidade ambiental",
+            "Economia de corantes"
+          ],
+          caseStudy: {
+            title: "Têxtil Sustentável Reduz Consumo de Água em 70%",
+            description: "Sistema integrado de filtração e reuso permitiu economia significativa de água e químicos.",
+            metrics: ["70% menos água", "50% economia em corantes", "Certificação têxtil verde"]
+          }
+        },
+        siderurgico: {
+          id: "siderurgico",
+          name: "Setor Siderúrgico",
+          icon: 'fas fa-hard-hat',
+          color: "#2C3E50",
+          description: "A siderurgia demanda filtros de alta resistência para águas de resfriamento, óleos hidráulicos e tratamento de gases.",
+          applications: [
+            {
+              name: "Água de Resfriamento",
+              description: "Filtração de água em circuitos de resfriamento de alto-fornos",
+              products: ["Filtros Autolimpantes FA-400", "Hidrociclones"]
+            },
+            {
+              name: "Óleos Hidráulicos",
+              description: "Proteção de sistemas hidráulicos de laminadores",
+              products: ["Filtros de Alta Pressão FAP-500", "Elementos Sinterizados"]
+            },
+            {
+              name: "Gases de Exaustão",
+              description: "Filtração de particulados em sistemas de exaustão",
+              products: ["Filtros de Mangas", "Precipitadores Eletrostáticos"]
+            }
+          ],
+          benefits: [
+            "Resistência a altas temperaturas",
+            "Operação contínua 24/7",
+            "Mínima perda de carga",
+            "Alta capacidade de retenção"
+          ],
+          caseStudy: {
+            title: "Usina Siderúrgica Aumenta Disponibilidade em 25%",
+            description: "Filtros autolimpantes reduziram paradas para manutenção e aumentaram produtividade.",
+            metrics: ["25% mais disponibilidade", "40% menos manutenção", "R$ 1.5M economia/ano"]
+          }
+        }
+      };
+      
+      const currentIndustry = industriesData[selectedIndustry];
+      
+      useEffect(() => {
+        // Check if URL has a hash for specific industry
+        const hash = window.location.hash.slice(1);
+        if (hash && industriesData[hash]) {
+          setSelectedIndustry(hash);
+        }
+      }, []);
+      
+      return h('section', { className: 'py-16 bg-white' },
+        h('div', { className: 'container mx-auto px-4' },
+          h('div', { className: 'grid grid-cols-1 lg:grid-cols-4 gap-8' },
+            // Industry selector sidebar
+            h('div', { className: 'lg:col-span-1' },
+              h('h3', { 
+                className: 'text-lg font-semibold mb-4',
+                style: { color: colors.primary }
+              }, 'Selecione o Segmento'),
+              
+              h('div', { className: 'space-y-2' },
+                Object.values(industriesData).map(industry =>
+                  h('button', {
+                    key: industry.id,
+                    id: industry.id,
+                    onClick: () => {
+                      setSelectedIndustry(industry.id);
+                      window.location.hash = industry.id;
+                    },
+                    className: `w-full text-left p-4 rounded-lg border transition-all duration-200 ${
+                      selectedIndustry === industry.id 
+                        ? 'border-2 shadow-md' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`,
+                    style: {
+                      borderColor: selectedIndustry === industry.id ? industry.color : undefined,
+                      backgroundColor: selectedIndustry === industry.id ? `${industry.color}08` : undefined
+                    }
+                  },
+                    h('div', { className: 'flex items-center' },
+                      h('i', {
+                        className: `${industry.icon} text-2xl mr-3`,
+                        style: { color: selectedIndustry === industry.id ? industry.color : '#6B7280' }
+                      }),
+                      h('span', {
+                        className: 'font-medium',
+                        style: { color: selectedIndustry === industry.id ? industry.color : '#374151' }
+                      }, industry.name)
+                    )
+                  )
+                )
+              )
+            ),
+            
+            // Industry detail content
+            h('div', { className: 'lg:col-span-3' },
+              h('div', { className: 'bg-gray-50 rounded-lg p-8' },
+                // Header
+                h('div', { className: 'flex items-start mb-6' },
+                  h('div', {
+                    className: 'w-16 h-16 rounded-full flex items-center justify-center mr-4',
+                    style: { backgroundColor: `${currentIndustry.color}20` }
+                  },
+                    h('i', {
+                      className: `${currentIndustry.icon} text-3xl`,
+                      style: { color: currentIndustry.color }
+                    })
+                  ),
+                  h('div', null,
+                    h('h2', {
+                      className: 'text-3xl font-bold mb-2',
+                      style: { color: currentIndustry.color }
+                    }, currentIndustry.name),
+                    h('p', { className: 'text-gray-600 text-lg' }, currentIndustry.description)
+                  )
+                ),
+                
+                // Applications
+                h('div', { className: 'mb-8' },
+                  h('h3', {
+                    className: 'text-xl font-semibold mb-4',
+                    style: { color: colors.dark }
+                  }, 'Aplicações Específicas'),
+                  
+                  h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' },
+                    currentIndustry.applications.map((app, idx) =>
+                      h('div', {
+                        key: idx,
+                        className: 'bg-white rounded-lg p-4 border border-gray-200'
+                      },
+                        h('h4', {
+                          className: 'font-semibold mb-2',
+                          style: { color: currentIndustry.color }
+                        }, app.name),
+                        h('p', { className: 'text-sm text-gray-600 mb-3' }, app.description),
+                        h('div', { className: 'space-y-1' },
+                          h('p', { className: 'text-xs font-medium text-gray-500' }, 'Produtos recomendados:'),
+                          app.products.map((product, pidx) =>
+                            h('div', {
+                              key: pidx,
+                              className: 'flex items-center text-xs text-gray-600'
+                            },
+                              h('i', {
+                                className: 'fas fa-filter mr-1',
+                                style: { color: currentIndustry.color }
+                              }),
+                              product
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+                ),
+                
+                // Benefits and Case Study
+                h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-8' },
+                  // Benefits
+                  h('div', null,
+                    h('h3', {
+                      className: 'text-xl font-semibold mb-4',
+                      style: { color: colors.dark }
+                    }, 'Benefícios Principais'),
+                    
+                    h('div', { className: 'space-y-3' },
+                      currentIndustry.benefits.map((benefit, idx) =>
+                        h('div', { key: idx, className: 'flex items-start' },
+                          h('i', {
+                            className: 'fas fa-check-circle mr-3 mt-0.5 flex-shrink-0',
+                            style: { color: currentIndustry.color }
+                          }),
+                          h('span', { className: 'text-gray-700' }, benefit)
+                        )
+                      )
+                    )
+                  ),
+                  
+                  // Case Study
+                  h('div', null,
+                    h('h3', {
+                      className: 'text-xl font-semibold mb-4',
+                      style: { color: colors.dark }
+                    }, 'Caso de Sucesso'),
+                    
+                    h('div', {
+                      className: 'bg-white rounded-lg p-6 border-l-4',
+                      style: { borderColor: currentIndustry.color }
+                    },
+                      h('h4', {
+                        className: 'font-semibold mb-2',
+                        style: { color: currentIndustry.color }
+                      }, currentIndustry.caseStudy.title),
+                      h('p', { className: 'text-gray-600 mb-4' }, currentIndustry.caseStudy.description),
+                      h('div', { className: 'flex flex-wrap gap-3' },
+                        currentIndustry.caseStudy.metrics.map((metric, idx) =>
+                          h('span', {
+                            key: idx,
+                            className: 'inline-block px-3 py-1 rounded-full text-sm font-medium',
+                            style: {
+                              backgroundColor: `${currentIndustry.color}15`,
+                              color: currentIndustry.color
+                            }
+                          }, metric)
+                        )
+                      )
+                    )
+                  )
+                ),
+                
+                // CTAs
+                h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
+                  h('a', {
+                    href: '/produtos',
+                    className: 'inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition duration-150 ease-in-out text-white',
+                    style: { backgroundColor: currentIndustry.color }
+                  },
+                    'Ver produtos para ', currentIndustry.name,
+                    h('i', { className: 'fas fa-arrow-right ml-2' })
+                  ),
+                  h('a', {
+                    href: '/contato',
+                    className: 'inline-flex items-center justify-center px-6 py-3 rounded-md font-medium border-2 transition duration-150 ease-in-out',
+                    style: {
+                      borderColor: currentIndustry.color,
+                      color: currentIndustry.color
+                    }
+                  },
+                    'Solicitar consultoria técnica',
+                    h('i', { className: 'fas fa-chevron-right ml-2' })
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    };
+    
+    // Applications CTA Component
+    const ApplicationsCTA = () => {
+      return h('section', { className: 'py-16 relative overflow-hidden' },
+        h('div', {
+          className: 'absolute inset-0',
+          style: {
+            background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`
+          }
+        }),
+        
+        h('div', { className: 'absolute inset-0 opacity-10 pattern-animation' },
+          h('div', {
+            className: 'absolute inset-0',
+            style: {
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '60px 60px'
+            }
+          })
+        ),
+        
+        h('div', { className: 'relative z-10 container mx-auto px-4 text-center text-white' },
+          h('h2', { className: 'text-3xl md:text-4xl font-bold mb-4 font-display' },
+            'Precisa de uma Solução Específica?'
+          ),
+          
+          h('p', { className: 'text-xl mb-8 max-w-3xl mx-auto' },
+            'Nossa equipe técnica está pronta para desenvolver a solução ideal para os desafios ',
+            'únicos da sua indústria. Entre em contato para uma consultoria personalizada.'
+          ),
+          
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8' },
+            // Analysis card
+            h('div', { className: 'bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20' },
+              h('i', { className: 'fas fa-file-alt text-3xl mb-3' }),
+              h('h3', { className: 'font-semibold mb-2' }, 'Análise Técnica'),
+              h('p', { className: 'text-sm opacity-90' },
+                'Avaliação completa dos seus processos e necessidades de filtração'
+              )
+            ),
+            
+            // Custom project card
+            h('div', { className: 'bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20' },
+              h('i', { className: 'fas fa-comments text-3xl mb-3' }),
+              h('h3', { className: 'font-semibold mb-2' }, 'Projeto Customizado'),
+              h('p', { className: 'text-sm opacity-90' },
+                'Desenvolvimento de soluções sob medida para sua aplicação'
+              )
+            ),
+            
+            // Support card
+            h('div', { className: 'bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20' },
+              h('i', { className: 'fas fa-phone text-3xl mb-3' }),
+              h('h3', { className: 'font-semibold mb-2' }, 'Suporte Contínuo'),
+              h('p', { className: 'text-sm opacity-90' },
+                'Acompanhamento técnico durante toda a vida útil dos produtos'
+              )
+            )
+          ),
+          
+          h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
+            h('a', {
+              href: '/contato',
+              className: 'inline-block px-8 py-4 bg-white rounded-md font-medium text-lg transition duration-150 ease-in-out hover:bg-gray-100',
+              style: { color: colors.primary }
+            }, 'Solicitar Consultoria Técnica'),
+            
+            h('a', {
+              href: '/produtos',
+              className: 'inline-block px-8 py-4 bg-transparent border-2 border-white text-white rounded-md font-medium text-lg transition duration-150 ease-in-out hover:bg-white/10'
+            }, 'Ver Catálogo Completo')
+          ),
+          
+          h('p', { className: 'mt-8 text-sm opacity-80' },
+            'Atendimento direto com nossos engenheiros: ',
+            h('a', { href: 'tel:+551155551234', className: 'underline ml-1 font-medium' },
+              '(11) 5555-1234'
+            )
+          )
+        )
+      );
+    };
+    
+    // Footer Component (reused from index.html)
+    const Footer = () => {
+      return h('footer', { className: 'bg-neutral-900 text-white pt-12 pb-6' },
+        h('div', { className: 'container mx-auto px-4' },
+          // Main footer content
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8' },
+            // Company info
+            h('div', null,
+              h('div', { className: 'flex items-center mb-4' },
+                h('svg', { 
+                  className: 'h-10',
+                  viewBox: '0 0 200 40',
+                  fill: 'none',
+                  xmlns: 'http://www.w3.org/2000/svg'
+                },
+                  h('text', {
+                    x: '0',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '32',
+                    fontWeight: '700'
+                  }, 'TMF'),
+                  h('text', {
+                    x: '75',
+                    y: '30',
+                    fill: '#4c9f5f',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '28',
+                    fontWeight: '400'
+                  }, 'ibers')
+                ),
+                h('div', { className: 'ml-2' },
+                  h('span', { className: 'block text-xs text-accent-400' }, 'We Are Green')
+                )
+              ),
+              h('p', { className: 'text-sm text-gray-400 mb-4' },
+                'Soluções avançadas em filtração industrial com compromisso ambiental e tecnologia 100% brasileira.'
+              ),
+              // Social media links
+              h('div', { className: 'flex space-x-4' },
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-facebook-f' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-linkedin-in' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-instagram' })
+                ),
+                h('a', { href: '#', className: 'text-gray-400 hover:text-white transition' },
+                  h('i', { className: 'fab fa-youtube' })
+                )
+              )
+            ),
+            
+            // Products column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Produtos'),
+              h('ul', { className: 'space-y-2 text-sm' },
+                ['Filtros de Celulose', 'Filtros Sintéticos', 'Filtros Compostos', 'Elementos Filtrantes', 'Sistemas Integrados'].map(item =>
+                  h('li', { key: item },
+                    h('a', { href: '/produtos', className: 'text-gray-400 hover:text-white transition' }, item)
+                  )
+                )
+              )
+            ),
+            
+            // Contact column
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold mb-4' }, 'Contato'),
+              h('ul', { className: 'space-y-3 text-sm' },
+                h('li', { className: 'flex items-start' },
+                  h('i', { className: 'fas fa-map-marker-alt mt-1 mr-3 text-secondary-400' }),
+                  h('span', { className: 'text-gray-400' },
+                    'Av. Industrial, 1500', h('br'), 'Ribeirão Pires - SP', h('br'), 'CEP: 09400-000'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-phone mr-3 text-secondary-400' }),
+                  h('a', { href: 'tel:+551155551234', className: 'text-gray-400 hover:text-white transition' },
+                    '(11) 5555-1234'
+                  )
+                ),
+                h('li', { className: 'flex items-center' },
+                  h('i', { className: 'fas fa-envelope mr-3 text-secondary-400' }),
+                  h('a', { href: 'mailto:contato@tmffibers.com.br', className: 'text-gray-400 hover:text-white transition' },
+                    'contato@tmffibers.com.br'
+                  )
+                )
+              )
+            )
+          ),
+          
+          // Newsletter section
+          h('div', { className: 'border-t border-gray-800 pt-8 pb-6' },
+            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center' },
+              h('div', null,
+                h('h4', { className: 'text-lg font-semibold mb-2' }, 'Receba Novidades'),
+                h('p', { className: 'text-sm text-gray-400' },
+                  'Cadastre-se para receber informações sobre produtos e soluções'
+                )
+              ),
+              h('form', { className: 'flex gap-2' },
+                h('input', {
+                  type: 'email',
+                  placeholder: 'Seu e-mail',
+                  className: 'flex-1 px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:border-secondary-400 text-white'
+                }),
+                h('button', {
+                  type: 'submit',
+                  className: 'px-6 py-2 bg-secondary-500 text-white rounded-md hover:bg-secondary-600 transition font-medium'
+                }, 'Inscrever')
+              )
+            )
+          ),
+          
+          // Bottom bar
+          h('div', { className: 'border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400' },
+            h('p', null,
+              '© 2024 TMF Fibers. Todos os direitos reservados.'
+            ),
+            h('div', { className: 'flex space-x-6 mt-4 md:mt-0' },
+              h('a', { href: '/privacidade', className: 'hover:text-white transition' }, 'Política de Privacidade'),
+              h('a', { href: '/termos', className: 'hover:text-white transition' }, 'Termos de Uso'),
+              h('a', { href: '/certificacoes', className: 'hover:text-white transition' }, 'Certificações')
+            )
+          )
+        )
+      );
+    };
+    
+    // Main App Component
+    const ApplicationsPage = () => {
+      return h(Fragment, null,
+        h(Header),
+        h('main', { className: 'flex-grow' },
+          h(ApplicationsHero),
+          h(IndustryDetail),
+          h(ApplicationsCTA)
+        ),
+        h(Footer)
+      );
+    };
+    
+    // Render the app
+    ReactDOM.render(h(ApplicationsPage), document.getElementById('root'));
+  </script>
+</body>
+</html>
